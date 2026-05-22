@@ -1,0 +1,318 @@
+{
+  "schema_version": "ff-expert-judge-packet/0.1",
+  "scenario_id": "SC-04-slice-heel-gear-equipment",
+  "scenario_title": "Slice heel-gear — equipment_fit A/B, no swing rebuild until eq_ab passes",
+  "rubric_path": "tests/rubrics/expert-rubric.md",
+  "rubric_summary": "See tests/rubrics/expert-rubric.md. Score each scenario against 10 lenses; return a single JSON object matching the rubric output schema.",
+  "judge_question": "How close is the Forefront Coach Builder output for this scenario to what the listed expert-pattern lenses would broadly recommend? Treat lenses as comparison axes, not verbatim citations. Pain / readiness red gates are absolute.",
+  "scenario_fixture": {
+    "id": "SC-04-slice-heel-gear-equipment",
+    "title": "Slice heel-gear — equipment_fit A/B, no swing rebuild until eq_ab passes",
+    "fault_ids": [
+      "FAULT-SLICE"
+    ],
+    "branch_ids": {
+      "FAULT-SLICE": "heel-gear"
+    },
+    "gates": {
+      "pain": "green",
+      "readiness": "green",
+      "mobility": "green",
+      "contact": "green",
+      "stage": "green"
+    },
+    "client_level": "intermediate",
+    "gpl": 2,
+    "tools": [
+      "trackman_3d",
+      "equipment_ab"
+    ],
+    "selected_drills": [
+      "DR-WAR-001",
+      "DR-CON-004",
+      "DR-CFP-002"
+    ],
+    "expected_branch_intents": [
+      "equipment_fit"
+    ],
+    "expected_t1_profile_prefix": "eq_",
+    "expected_primary_categories": [
+      "contact_lowpoint",
+      "club_face_path",
+      "warmup_prep"
+    ],
+    "forbidden_categories_primary": [
+      "ground_force",
+      "speed",
+      "psychology",
+      "full_swing"
+    ],
+    "expected_session_mode": "normal",
+    "expected_session_blocks": [
+      "warmup",
+      "block1",
+      "block2",
+      "retest",
+      "reflection"
+    ],
+    "expected_must_pass_first": "eq_ab",
+    "expected_expert_patterns": [
+      "gear effect on heel strike with modern drivers",
+      "A/B head/shaft comparison before swing rebuild",
+      "strike map shifts before mechanics edits"
+    ],
+    "forbidden_language_patterns": [
+      "just shorten your backswing",
+      "open the clubface at the top"
+    ],
+    "expert_reference_tags": [
+      "adams_dana_fitting",
+      "trackman_strike_pattern",
+      "equipment_first_diagnosis"
+    ]
+  },
+  "extracted_output": {
+    "scenario_id": "SC-04-slice-heel-gear-equipment",
+    "fault_ids": [
+      "FAULT-SLICE"
+    ],
+    "branch_ids": {
+      "FAULT-SLICE": "heel-gear"
+    },
+    "intents": [
+      "equipment_fit"
+    ],
+    "dominant_intent": "equipment_fit",
+    "gates": {
+      "pain": "green",
+      "readiness": "green",
+      "mobility": "green",
+      "contact": "green",
+      "stage": "green"
+    },
+    "session_mode": "normal",
+    "proof_cards": [
+      {
+        "fault_id": "FAULT-SLICE",
+        "branch_id": "heel-gear",
+        "branch_intent": "equipment_fit",
+        "proof_test_ids": [
+          "PC-08",
+          "PC-02",
+          "PC-04"
+        ],
+        "t1": "eq_ab",
+        "t2": "eq_strike_compare",
+        "t3": "eq_transfer",
+        "proof_family": "full_swing"
+      }
+    ],
+    "drill_summary": [
+      {
+        "drill_id": "DR-WAR-001",
+        "category": "warmup_prep",
+        "found": true,
+        "practice_block": "warmup_prep",
+        "name": "TPI Resistance Band Activation (5 movements)"
+      },
+      {
+        "drill_id": "DR-CON-004",
+        "category": "contact_lowpoint",
+        "found": true,
+        "practice_block": "serial_variability",
+        "name": "Towel-Behind-Ball Low-Point Constraint"
+      },
+      {
+        "drill_id": "DR-CFP-002",
+        "category": "club_face_path",
+        "found": true,
+        "practice_block": "serial_variability",
+        "name": "JetStick Path-Change Drill"
+      }
+    ],
+    "primary_categories": [
+      "contact_lowpoint",
+      "club_face_path",
+      "warmup_prep"
+    ],
+    "primary_drill_ids": [
+      "DR-CON-004",
+      "DR-CFP-002"
+    ],
+    "session_blocks": [
+      {
+        "kind": "warmup",
+        "drills": [
+          {
+            "drill_id": "DR-WAR-001",
+            "category": "warmup_prep",
+            "carryover": false,
+            "note": null
+          }
+        ]
+      },
+      {
+        "kind": "block1",
+        "drills": [
+          {
+            "drill_id": "DR-CON-004",
+            "category": "contact_lowpoint",
+            "carryover": false,
+            "note": null
+          }
+        ]
+      },
+      {
+        "kind": "block2",
+        "drills": [
+          {
+            "drill_id": "DR-CFP-002",
+            "category": "club_face_path",
+            "carryover": false,
+            "note": null
+          }
+        ]
+      },
+      {
+        "kind": "retest",
+        "drills": []
+      },
+      {
+        "kind": "reflection",
+        "drills": []
+      }
+    ],
+    "alignment_record": {
+      "allowed_categories": [
+        "warmup_prep",
+        "contact_lowpoint",
+        "club_face_path"
+      ],
+      "carryover_categories": [
+        "short_game"
+      ],
+      "blocked_categories": [
+        "speed",
+        "ground_force",
+        "psychology",
+        "full_swing"
+      ],
+      "preferred_primary_block": "primary",
+      "allowed_carryover_blocks": [
+        "carryover",
+        "retest"
+      ],
+      "must_pass_first": "eq_ab",
+      "do_not_use_if": [
+        "pain_red",
+        "mobility_red"
+      ],
+      "session_mode": "normal",
+      "notes": "Equipment A/B + strike comparison must clear before swing rebuild."
+    },
+    "filtered_out": []
+  },
+  "deterministic_checks": [
+    {
+      "name": "expected_branch_intents_present",
+      "ok": true,
+      "detail": {
+        "expected": [
+          "equipment_fit"
+        ],
+        "got": [
+          "equipment_fit"
+        ]
+      }
+    },
+    {
+      "name": "t1_profile_prefix_match",
+      "ok": true,
+      "detail": {
+        "expected_prefix": "eq_",
+        "got": "eq_ab"
+      }
+    },
+    {
+      "name": "expected_primary_categories_present",
+      "ok": true,
+      "detail": {
+        "expected_subset": [
+          "contact_lowpoint",
+          "club_face_path",
+          "warmup_prep"
+        ],
+        "got": [
+          "contact_lowpoint",
+          "club_face_path",
+          "warmup_prep"
+        ],
+        "session_mode": "normal"
+      }
+    },
+    {
+      "name": "forbidden_categories_absent_primary",
+      "ok": true,
+      "detail": {
+        "forbidden": [
+          "ground_force",
+          "speed",
+          "psychology",
+          "full_swing"
+        ],
+        "hits": []
+      }
+    },
+    {
+      "name": "expected_session_mode",
+      "ok": true,
+      "detail": {
+        "expected": "normal",
+        "got": "normal"
+      }
+    },
+    {
+      "name": "expected_session_blocks_present",
+      "ok": true,
+      "detail": {
+        "expected": [
+          "warmup",
+          "block1",
+          "block2",
+          "retest",
+          "reflection"
+        ],
+        "got": [
+          "warmup",
+          "block1",
+          "block2",
+          "retest",
+          "reflection"
+        ]
+      }
+    },
+    {
+      "name": "no_duplicate_primary_drills",
+      "ok": true,
+      "detail": {
+        "duplicates": []
+      }
+    },
+    {
+      "name": "pump_drill_primary_once",
+      "ok": true,
+      "detail": {
+        "primary_count": 0
+      }
+    },
+    {
+      "name": "equipment_must_pass_first_present",
+      "ok": true,
+      "detail": {
+        "expected": "eq_ab",
+        "got": "eq_ab"
+      }
+    }
+  ],
+  "deterministic_pass": true
+}

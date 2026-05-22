@@ -1,0 +1,286 @@
+{
+  "schema_version": "ff-expert-judge-packet/0.1",
+  "scenario_id": "SC-11-pain-readiness-red",
+  "scenario_title": "Pain RED — STOP / refer, no normal practice",
+  "rubric_path": "tests/rubrics/expert-rubric.md",
+  "rubric_summary": "See tests/rubrics/expert-rubric.md. Score each scenario against 10 lenses; return a single JSON object matching the rubric output schema.",
+  "judge_question": "How close is the Forefront Coach Builder output for this scenario to what the listed expert-pattern lenses would broadly recommend? Treat lenses as comparison axes, not verbatim citations. Pain / readiness red gates are absolute.",
+  "scenario_fixture": {
+    "id": "SC-11-pain-readiness-red",
+    "title": "Pain RED — STOP / refer, no normal practice",
+    "fault_ids": [
+      "FAULT-READINESS-RED"
+    ],
+    "branch_ids": {
+      "FAULT-READINESS-RED": "pain-gate"
+    },
+    "gates": {
+      "pain": "red",
+      "readiness": "amber",
+      "mobility": "amber",
+      "contact": "green",
+      "stage": "green"
+    },
+    "client_level": "intermediate",
+    "gpl": 1,
+    "tools": [],
+    "selected_drills": [
+      "DR-WAR-001"
+    ],
+    "expected_branch_intents": [
+      "mobility_pain_readiness"
+    ],
+    "expected_t1_profile_prefix": "rd_",
+    "expected_primary_categories": [
+      "warmup_prep"
+    ],
+    "forbidden_categories_primary": [
+      "speed",
+      "ground_force",
+      "full_swing",
+      "club_face_path",
+      "contact_lowpoint",
+      "psychology",
+      "short_game"
+    ],
+    "expected_session_mode": "stop_refer",
+    "expected_session_blocks": [
+      "warmup",
+      "block1",
+      "block2",
+      "retest",
+      "reflection"
+    ],
+    "expected_expert_patterns": [
+      "pain red triggers STOP / refer",
+      "document and route to medical",
+      "no high-intent practice today regardless of stage"
+    ],
+    "forbidden_language_patterns": [
+      "play through it",
+      "ice and shake it off",
+      "warm up more, you'll be fine"
+    ],
+    "expert_reference_tags": [
+      "tpi_pain_screen",
+      "forefront_stop_refer",
+      "medical_referral_first"
+    ]
+  },
+  "extracted_output": {
+    "scenario_id": "SC-11-pain-readiness-red",
+    "fault_ids": [
+      "FAULT-READINESS-RED"
+    ],
+    "branch_ids": {
+      "FAULT-READINESS-RED": "pain-gate"
+    },
+    "intents": [
+      "mobility_pain_readiness"
+    ],
+    "dominant_intent": "mobility_pain_readiness",
+    "gates": {
+      "pain": "red",
+      "readiness": "amber",
+      "mobility": "amber",
+      "contact": "green",
+      "stage": "green"
+    },
+    "session_mode": "stop_refer",
+    "proof_cards": [
+      {
+        "fault_id": "FAULT-READINESS-RED",
+        "branch_id": "pain-gate",
+        "branch_intent": "mobility_pain_readiness",
+        "proof_test_ids": [
+          "PC-09"
+        ],
+        "t1": "rd_pain_gate",
+        "t2": "rd_modified_warmup",
+        "t3": "rd_low_intent_retest",
+        "proof_family": "readiness"
+      }
+    ],
+    "drill_summary": [
+      {
+        "drill_id": "DR-WAR-001",
+        "category": "warmup_prep",
+        "found": true,
+        "practice_block": "warmup_prep",
+        "name": "TPI Resistance Band Activation (5 movements)"
+      }
+    ],
+    "primary_categories": [
+      "warmup_prep"
+    ],
+    "primary_drill_ids": [],
+    "session_blocks": [
+      {
+        "kind": "warmup",
+        "drills": [
+          {
+            "drill_id": "DR-WAR-001",
+            "category": "warmup_prep",
+            "carryover": false,
+            "note": null
+          }
+        ]
+      },
+      {
+        "kind": "block1",
+        "drills": []
+      },
+      {
+        "kind": "block2",
+        "drills": []
+      },
+      {
+        "kind": "retest",
+        "drills": []
+      },
+      {
+        "kind": "reflection",
+        "drills": []
+      }
+    ],
+    "alignment_record": {
+      "allowed_categories": [
+        "warmup_prep"
+      ],
+      "carryover_categories": [
+        "putting",
+        "short_game"
+      ],
+      "blocked_categories": [
+        "speed",
+        "ground_force",
+        "full_swing",
+        "club_face_path",
+        "contact_lowpoint",
+        "psychology"
+      ],
+      "preferred_primary_block": "warmup",
+      "allowed_carryover_blocks": [
+        "retest",
+        "reflection"
+      ],
+      "do_not_use_if": [
+        "pain_red",
+        "mobility_red",
+        "readiness_red"
+      ],
+      "session_mode": "modified_only",
+      "stop_refer_language": true,
+      "notes": "Modified warm-up only, OR stop / refer. No high-intent practice today."
+    },
+    "filtered_out": []
+  },
+  "deterministic_checks": [
+    {
+      "name": "expected_branch_intents_present",
+      "ok": true,
+      "detail": {
+        "expected": [
+          "mobility_pain_readiness"
+        ],
+        "got": [
+          "mobility_pain_readiness"
+        ]
+      }
+    },
+    {
+      "name": "t1_profile_prefix_match",
+      "ok": true,
+      "detail": {
+        "expected_prefix": "rd_",
+        "got": "rd_pain_gate"
+      }
+    },
+    {
+      "name": "expected_primary_categories_present",
+      "ok": true,
+      "detail": {
+        "expected_subset": [
+          "warmup_prep"
+        ],
+        "got": [
+          "warmup_prep"
+        ],
+        "session_mode": "stop_refer"
+      }
+    },
+    {
+      "name": "forbidden_categories_absent_primary",
+      "ok": true,
+      "detail": {
+        "forbidden": [
+          "speed",
+          "ground_force",
+          "full_swing",
+          "club_face_path",
+          "contact_lowpoint",
+          "psychology",
+          "short_game"
+        ],
+        "hits": []
+      }
+    },
+    {
+      "name": "expected_session_mode",
+      "ok": true,
+      "detail": {
+        "expected": "stop_refer",
+        "got": "stop_refer"
+      }
+    },
+    {
+      "name": "expected_session_blocks_present",
+      "ok": true,
+      "detail": {
+        "expected": [
+          "warmup",
+          "block1",
+          "block2",
+          "retest",
+          "reflection"
+        ],
+        "got": [
+          "warmup",
+          "block1",
+          "block2",
+          "retest",
+          "reflection"
+        ]
+      }
+    },
+    {
+      "name": "no_duplicate_primary_drills",
+      "ok": true,
+      "detail": {
+        "duplicates": []
+      }
+    },
+    {
+      "name": "pump_drill_primary_once",
+      "ok": true,
+      "detail": {
+        "primary_count": 0
+      }
+    },
+    {
+      "name": "pain_red_forces_stop_refer",
+      "ok": true,
+      "detail": {
+        "gates": {
+          "pain": "red",
+          "readiness": "amber",
+          "mobility": "amber",
+          "contact": "green",
+          "stage": "green"
+        },
+        "got": "stop_refer"
+      }
+    }
+  ],
+  "deterministic_pass": true
+}

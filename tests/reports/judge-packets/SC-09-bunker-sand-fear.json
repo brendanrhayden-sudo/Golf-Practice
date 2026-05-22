@@ -1,0 +1,313 @@
+{
+  "schema_version": "ff-expert-judge-packet/0.1",
+  "scenario_id": "SC-09-bunker-sand-fear",
+  "scenario_title": "Bunker sand-fear — pressure_attention primary, mechanics carryover",
+  "rubric_path": "tests/rubrics/expert-rubric.md",
+  "rubric_summary": "See tests/rubrics/expert-rubric.md. Score each scenario against 10 lenses; return a single JSON object matching the rubric output schema.",
+  "judge_question": "How close is the Forefront Coach Builder output for this scenario to what the listed expert-pattern lenses would broadly recommend? Treat lenses as comparison axes, not verbatim citations. Pain / readiness red gates are absolute.",
+  "scenario_fixture": {
+    "id": "SC-09-bunker-sand-fear",
+    "title": "Bunker sand-fear — pressure_attention primary, mechanics carryover",
+    "fault_ids": [
+      "FAULT-BUNKER-ENTRY"
+    ],
+    "branch_ids": {
+      "FAULT-BUNKER-ENTRY": "sand-fear"
+    },
+    "gates": {
+      "pain": "green",
+      "readiness": "green",
+      "mobility": "green",
+      "contact": "green",
+      "stage": "green"
+    },
+    "client_level": "intermediate",
+    "gpl": 3,
+    "tools": [
+      "trackman_shot_analysis"
+    ],
+    "selected_drills": [
+      "DR-WAR-001",
+      "DR-PSY-001",
+      "DR-PSY-002",
+      "DR-SG-004"
+    ],
+    "expected_branch_intents": [
+      "pressure_attention"
+    ],
+    "expected_t1_profile_prefix": "ps_",
+    "expected_primary_categories": [
+      "psychology",
+      "warmup_prep"
+    ],
+    "forbidden_categories_primary": [
+      "speed",
+      "ground_force"
+    ],
+    "expected_session_mode": "normal",
+    "expected_session_blocks": [
+      "warmup",
+      "block1",
+      "block2",
+      "retest",
+      "reflection"
+    ],
+    "expected_expert_patterns": [
+      "graded exposure to bunker shot",
+      "routine / regulation primary",
+      "mechanics secondary to threat-response"
+    ],
+    "forbidden_language_patterns": [
+      "just relax",
+      "you're choking",
+      "open your stance and hit behind it"
+    ],
+    "expert_reference_tags": [
+      "wulf_optimal_theory",
+      "winkelman_3rs",
+      "sieckmann_bunker_psych"
+    ]
+  },
+  "extracted_output": {
+    "scenario_id": "SC-09-bunker-sand-fear",
+    "fault_ids": [
+      "FAULT-BUNKER-ENTRY"
+    ],
+    "branch_ids": {
+      "FAULT-BUNKER-ENTRY": "sand-fear"
+    },
+    "intents": [
+      "pressure_attention"
+    ],
+    "dominant_intent": "pressure_attention",
+    "gates": {
+      "pain": "green",
+      "readiness": "green",
+      "mobility": "green",
+      "contact": "green",
+      "stage": "green"
+    },
+    "session_mode": "normal",
+    "proof_cards": [
+      {
+        "fault_id": "FAULT-BUNKER-ENTRY",
+        "branch_id": "sand-fear",
+        "branch_intent": "pressure_attention",
+        "proof_test_ids": [
+          "PC-07",
+          "PC-14"
+        ],
+        "t1": "ps_threat_screen",
+        "t2": "ps_routine_reset",
+        "t3": "ps_consequence_retest",
+        "proof_family": "bunker"
+      }
+    ],
+    "drill_summary": [
+      {
+        "drill_id": "DR-WAR-001",
+        "category": "warmup_prep",
+        "found": true,
+        "practice_block": "warmup_prep",
+        "name": "TPI Resistance Band Activation (5 movements)"
+      },
+      {
+        "drill_id": "DR-PSY-001",
+        "category": "psychology",
+        "found": true,
+        "practice_block": "pressure_scoring",
+        "name": "Four-Phase PSR Build"
+      },
+      {
+        "drill_id": "DR-PSY-002",
+        "category": "psychology",
+        "found": true,
+        "practice_block": "reflection",
+        "name": "Box Breath + Cue Word Reset"
+      },
+      {
+        "drill_id": "DR-SG-004",
+        "category": "short_game",
+        "found": true,
+        "practice_block": "serial_variability",
+        "name": "Four-Trajectory Shot Map"
+      }
+    ],
+    "primary_categories": [
+      "psychology",
+      "warmup_prep"
+    ],
+    "primary_drill_ids": [
+      "DR-PSY-001",
+      "DR-PSY-002"
+    ],
+    "session_blocks": [
+      {
+        "kind": "warmup",
+        "drills": [
+          {
+            "drill_id": "DR-WAR-001",
+            "category": "warmup_prep",
+            "carryover": false,
+            "note": null
+          }
+        ]
+      },
+      {
+        "kind": "block1",
+        "drills": [
+          {
+            "drill_id": "DR-PSY-001",
+            "category": "psychology",
+            "carryover": false,
+            "note": null
+          }
+        ]
+      },
+      {
+        "kind": "block2",
+        "drills": [
+          {
+            "drill_id": "DR-PSY-002",
+            "category": "psychology",
+            "carryover": false,
+            "note": null
+          },
+          {
+            "drill_id": "DR-SG-004",
+            "category": "short_game",
+            "carryover": true,
+            "note": null
+          }
+        ]
+      },
+      {
+        "kind": "retest",
+        "drills": []
+      },
+      {
+        "kind": "reflection",
+        "drills": []
+      }
+    ],
+    "alignment_record": {
+      "allowed_categories": [
+        "warmup_prep",
+        "psychology"
+      ],
+      "carryover_categories": [
+        "full_swing",
+        "short_game",
+        "putting"
+      ],
+      "blocked_categories": [
+        "speed",
+        "ground_force"
+      ],
+      "preferred_primary_block": "primary",
+      "allowed_carryover_blocks": [
+        "carryover",
+        "scoring",
+        "retest",
+        "reflection"
+      ],
+      "do_not_use_if": [
+        "pain_red"
+      ],
+      "session_mode": "normal",
+      "notes": "Routine / regulation / attention proof FIRST. Mechanics are secondary."
+    },
+    "filtered_out": []
+  },
+  "deterministic_checks": [
+    {
+      "name": "expected_branch_intents_present",
+      "ok": true,
+      "detail": {
+        "expected": [
+          "pressure_attention"
+        ],
+        "got": [
+          "pressure_attention"
+        ]
+      }
+    },
+    {
+      "name": "t1_profile_prefix_match",
+      "ok": true,
+      "detail": {
+        "expected_prefix": "ps_",
+        "got": "ps_threat_screen"
+      }
+    },
+    {
+      "name": "expected_primary_categories_present",
+      "ok": true,
+      "detail": {
+        "expected_subset": [
+          "psychology",
+          "warmup_prep"
+        ],
+        "got": [
+          "psychology",
+          "warmup_prep"
+        ],
+        "session_mode": "normal"
+      }
+    },
+    {
+      "name": "forbidden_categories_absent_primary",
+      "ok": true,
+      "detail": {
+        "forbidden": [
+          "speed",
+          "ground_force"
+        ],
+        "hits": []
+      }
+    },
+    {
+      "name": "expected_session_mode",
+      "ok": true,
+      "detail": {
+        "expected": "normal",
+        "got": "normal"
+      }
+    },
+    {
+      "name": "expected_session_blocks_present",
+      "ok": true,
+      "detail": {
+        "expected": [
+          "warmup",
+          "block1",
+          "block2",
+          "retest",
+          "reflection"
+        ],
+        "got": [
+          "warmup",
+          "block1",
+          "block2",
+          "retest",
+          "reflection"
+        ]
+      }
+    },
+    {
+      "name": "no_duplicate_primary_drills",
+      "ok": true,
+      "detail": {
+        "duplicates": []
+      }
+    },
+    {
+      "name": "pump_drill_primary_once",
+      "ok": true,
+      "detail": {
+        "primary_count": 0
+      }
+    }
+  ],
+  "deterministic_pass": true
+}

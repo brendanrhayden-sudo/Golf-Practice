@@ -1,0 +1,326 @@
+{
+  "schema_version": "ff-expert-judge-packet/0.1",
+  "scenario_id": "SC-08-wedge-entry",
+  "scenario_title": "Wedge entry-point — short_game only, no full-swing primary",
+  "rubric_path": "tests/rubrics/expert-rubric.md",
+  "rubric_summary": "See tests/rubrics/expert-rubric.md. Score each scenario against 10 lenses; return a single JSON object matching the rubric output schema.",
+  "judge_question": "How close is the Forefront Coach Builder output for this scenario to what the listed expert-pattern lenses would broadly recommend? Treat lenses as comparison axes, not verbatim citations. Pain / readiness red gates are absolute.",
+  "scenario_fixture": {
+    "id": "SC-08-wedge-entry",
+    "title": "Wedge entry-point — short_game only, no full-swing primary",
+    "fault_ids": [
+      "FAULT-WEDGE-CONTACT"
+    ],
+    "branch_ids": {
+      "FAULT-WEDGE-CONTACT": "entry-point"
+    },
+    "gates": {
+      "pain": "green",
+      "readiness": "green",
+      "mobility": "green",
+      "contact": "green",
+      "stage": "green"
+    },
+    "client_level": "intermediate",
+    "gpl": 3,
+    "tools": [
+      "trackman_shot_analysis"
+    ],
+    "selected_drills": [
+      "DR-WAR-001",
+      "DR-SG-001",
+      "DR-SG-002",
+      "DR-SG-003"
+    ],
+    "expected_branch_intents": [
+      "short_game_entry"
+    ],
+    "expected_t1_profile_prefix": "sg_",
+    "expected_primary_categories": [
+      "short_game",
+      "warmup_prep"
+    ],
+    "forbidden_categories_primary": [
+      "full_swing",
+      "speed",
+      "ground_force",
+      "club_face_path",
+      "putting",
+      "psychology"
+    ],
+    "expected_session_mode": "normal",
+    "expected_session_blocks": [
+      "warmup",
+      "block1",
+      "block2",
+      "retest",
+      "reflection"
+    ],
+    "expected_expert_patterns": [
+      "entry-point line / brush window",
+      "landing-window framing rather than distance-only",
+      "lie variation as constraint"
+    ],
+    "forbidden_language_patterns": [
+      "just chip it",
+      "use your wrists",
+      "scoop it"
+    ],
+    "expert_reference_tags": [
+      "sieckmann_short_game",
+      "short_game_chef_chipping",
+      "mayo_short_game"
+    ]
+  },
+  "extracted_output": {
+    "scenario_id": "SC-08-wedge-entry",
+    "fault_ids": [
+      "FAULT-WEDGE-CONTACT"
+    ],
+    "branch_ids": {
+      "FAULT-WEDGE-CONTACT": "entry-point"
+    },
+    "intents": [
+      "short_game_entry"
+    ],
+    "dominant_intent": "short_game_entry",
+    "gates": {
+      "pain": "green",
+      "readiness": "green",
+      "mobility": "green",
+      "contact": "green",
+      "stage": "green"
+    },
+    "session_mode": "normal",
+    "proof_cards": [
+      {
+        "fault_id": "FAULT-WEDGE-CONTACT",
+        "branch_id": "entry-point",
+        "branch_intent": "short_game_entry",
+        "proof_test_ids": [
+          "PC-13",
+          "PC-11",
+          "PC-04",
+          "PC-02"
+        ],
+        "t1": "sg_entry_line",
+        "t2": "sg_landing_window",
+        "t3": "sg_lie_variation",
+        "proof_family": "short_game"
+      }
+    ],
+    "drill_summary": [
+      {
+        "drill_id": "DR-WAR-001",
+        "category": "warmup_prep",
+        "found": true,
+        "practice_block": "warmup_prep",
+        "name": "TPI Resistance Band Activation (5 movements)"
+      },
+      {
+        "drill_id": "DR-SG-001",
+        "category": "short_game",
+        "found": true,
+        "practice_block": "representative_transfer",
+        "name": "Three-Ball Position Selector (Justin Rose / Sean Foley)"
+      },
+      {
+        "drill_id": "DR-SG-002",
+        "category": "short_game",
+        "found": true,
+        "practice_block": "representative_transfer",
+        "name": "Clock-System Wedge Distance Control"
+      },
+      {
+        "drill_id": "DR-SG-003",
+        "category": "short_game",
+        "found": true,
+        "practice_block": "blocked_acquisition",
+        "name": "Landing Window Ladder"
+      }
+    ],
+    "primary_categories": [
+      "short_game",
+      "warmup_prep"
+    ],
+    "primary_drill_ids": [
+      "DR-SG-001",
+      "DR-SG-002"
+    ],
+    "session_blocks": [
+      {
+        "kind": "warmup",
+        "drills": [
+          {
+            "drill_id": "DR-WAR-001",
+            "category": "warmup_prep",
+            "carryover": false,
+            "note": null
+          }
+        ]
+      },
+      {
+        "kind": "block1",
+        "drills": [
+          {
+            "drill_id": "DR-SG-001",
+            "category": "short_game",
+            "carryover": false,
+            "note": null
+          }
+        ]
+      },
+      {
+        "kind": "block2",
+        "drills": [
+          {
+            "drill_id": "DR-SG-002",
+            "category": "short_game",
+            "carryover": false,
+            "note": null
+          }
+        ]
+      },
+      {
+        "kind": "retest",
+        "drills": [
+          {
+            "drill_id": "DR-SG-003",
+            "category": "short_game",
+            "carryover": false,
+            "note": null
+          }
+        ]
+      },
+      {
+        "kind": "reflection",
+        "drills": []
+      }
+    ],
+    "alignment_record": {
+      "allowed_categories": [
+        "short_game",
+        "warmup_prep"
+      ],
+      "carryover_categories": [
+        "short_game"
+      ],
+      "blocked_categories": [
+        "full_swing",
+        "speed",
+        "ground_force",
+        "club_face_path",
+        "putting",
+        "psychology"
+      ],
+      "preferred_primary_block": "primary",
+      "allowed_carryover_blocks": [
+        "carryover",
+        "retest",
+        "reflection"
+      ],
+      "do_not_use_if": [
+        "pain_red",
+        "mobility_red"
+      ],
+      "session_mode": "normal",
+      "notes": "Short-game entry — short_game category only."
+    },
+    "filtered_out": []
+  },
+  "deterministic_checks": [
+    {
+      "name": "expected_branch_intents_present",
+      "ok": true,
+      "detail": {
+        "expected": [
+          "short_game_entry"
+        ],
+        "got": [
+          "short_game_entry"
+        ]
+      }
+    },
+    {
+      "name": "t1_profile_prefix_match",
+      "ok": true,
+      "detail": {
+        "expected_prefix": "sg_",
+        "got": "sg_entry_line"
+      }
+    },
+    {
+      "name": "expected_primary_categories_present",
+      "ok": true,
+      "detail": {
+        "expected_subset": [
+          "short_game",
+          "warmup_prep"
+        ],
+        "got": [
+          "short_game",
+          "warmup_prep"
+        ],
+        "session_mode": "normal"
+      }
+    },
+    {
+      "name": "forbidden_categories_absent_primary",
+      "ok": true,
+      "detail": {
+        "forbidden": [
+          "full_swing",
+          "speed",
+          "ground_force",
+          "club_face_path",
+          "putting",
+          "psychology"
+        ],
+        "hits": []
+      }
+    },
+    {
+      "name": "expected_session_mode",
+      "ok": true,
+      "detail": {
+        "expected": "normal",
+        "got": "normal"
+      }
+    },
+    {
+      "name": "expected_session_blocks_present",
+      "ok": true,
+      "detail": {
+        "expected": [
+          "warmup",
+          "block1",
+          "block2",
+          "retest",
+          "reflection"
+        ],
+        "got": [
+          "warmup",
+          "block1",
+          "block2",
+          "retest",
+          "reflection"
+        ]
+      }
+    },
+    {
+      "name": "no_duplicate_primary_drills",
+      "ok": true,
+      "detail": {
+        "duplicates": []
+      }
+    },
+    {
+      "name": "pump_drill_primary_once",
+      "ok": true,
+      "detail": {
+        "primary_count": 0
+      }
+    }
+  ],
+  "deterministic_pass": true
+}

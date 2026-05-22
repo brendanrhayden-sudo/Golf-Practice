@@ -1,0 +1,100 @@
+Meta: {
+  version: '2026-05-22',
+  branch_authoring_pass: true,
+  branch_overrides_count: 219,
+  branch_intents: [
+    'aim_setup',
+    'equipment_fit',
+    'face_control',
+    'path_delivery',
+    'strike_lowpoint',
+    'dynamic_loft_spinloft',
+    'ground_force_pressure',
+    'sequencing_kinematics',
+    'wrist_release_hackmotion',
+    'speed_readiness',
+    'speed_transfer',
+    'putting_start_line',
+    'putting_speed_control',
+    'putting_read_aim',
+    'short_game_entry',
+    'short_game_landing_window',
+    'bunker_entry',
+    'pressure_attention',
+    'course_decision',
+    'mobility_pain_readiness'
+  ],
+  review_default: true,
+  pipeline: [
+    'visible_flaw',
+    'cause_branch_shortlist',
+    'proof_test',
+    'confirmed_cause',
+    'drill_candidate'
+  ],
+  duplicate_prevention_rule: 'FF_SESSION_LINK_RULES owns blocked→serial→random→transfer carryover. Diagnostic layer NEVER directly prescribes drills; it confirms cause.',
+  proof_before_drill_standard: true,
+  evidence_flags: [
+    'evidence_supported',
+    'expert_framework',
+    'ikb_supported',
+    'db_confirmed',
+    'review_required'
+  ],
+  source_tags_legend: {
+    'GOLF-KB': 'Forefront golf knowledge base',
+    IKB: 'Internal knowledge base (Supabase tables)',
+    ML: 'Motor learning literature',
+    TPI: 'Titleist Performance Institute',
+    REVIEW: 'Open item — Brendan validation required'
+  }
+}
+Intents: 20
+Overrides: 219
+Coverage: 210/210 branches authored (100.0%).
+OK:   All current branches must be authored. Unexpected inferred: 0
+OK:   Putting branches must not carry full-swing / force / Mach3 / speed tools (0 violations).
+OK:   Equipment branches must not require sleep / contamination window (0 violations).
+OK:   Pain / readiness branches must not carry speed-training / Mach3 tools (0 violations).
+OK:   Pressure / attention branches must not present mechanics-first proof cards (0 violations).
+OK:   Every authored branch must carry why/do_not_assume + override=true (0 violations).
+OK:   Target fault families must all be authored (0 missing).
+
+Per-fault coverage:
+  OK FAULT-AIM-MISMATCH: 4/4
+  OK FAULT-ALL-TURN-NO-SHIFT: 3/3
+  OK FAULT-ARM-LIFT: 3/3
+  OK FAULT-BALLOON: 3/3
+  OK FAULT-BLOCK: 3/3
+  OK FAULT-BUNKER-ENTRY: 3/3
+  OK FAULT-CAST: 4/4
+  OK FAULT-CENTER-CONTACT-CHAOS: 3/3
+  OK FAULT-CHICKEN-WING: 4/4
+  OK FAULT-CHUNK: 3/3
+  OK FAULT-CLUB-SELECTION-MISMATCH: 4/4
+  OK FAULT-COURSE-TRANSFER: 3/3
+  OK FAULT-DOUBLE-CROSS: 3/3
+  OK FAULT-DRIVER-SETUP-MISMATCH: 3/3
+  OK FAULT-DYNAMIC-LOFT-HIGH: 3/3
+  OK FAULT-EARLY-EXT: 3/3
+  OK FAULT-EQUIP-LIE-LOFT: 3/3
+  OK FAULT-FACE-CLOSED: 4/4
+  OK FAULT-FACE-OPEN: 3/3
+  OK FAULT-FAT-THIN-ALT: 3/3
+  OK FAULT-FLIP-SCOOP: 3/3
+  OK FAULT-FREEZE-BALL: 4/4
+  OK FAULT-HANDLE-DRAG: 3/3
+  OK FAULT-HANG-BACK: 3/3
+  OK FAULT-HEEL-STRIKE: 3/3
+  OK FAULT-HEEL-TOE-STRIKE: 3/3
+  OK FAULT-HOOK: 3/3
+  OK FAULT-IRON-SPEC-MISMATCH: 4/4
+  OK FAULT-LOSS-POSTURE: 3/3
+  OK FAULT-LOW-BULLET: 3/3
+  OK FAULT-LOWPOINT-BACK: 3/3
+  OK FAULT-NUMBER-CHASE: 3/3
+  OK FAULT-OTT: 3/3
+  OK FAULT-OVER-SWING: 4/4
+  OK FAULT-PATH-LEFT: 4/4
+  OK FAULT-PATH-RIGHT: 4/4
+  OK FAULT-POOR-PSR: 3/3

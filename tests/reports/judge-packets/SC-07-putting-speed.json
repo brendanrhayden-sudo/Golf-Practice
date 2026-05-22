@@ -1,0 +1,325 @@
+{
+  "schema_version": "ff-expert-judge-packet/0.1",
+  "scenario_id": "SC-07-putting-speed",
+  "scenario_title": "Putting speed — distance ladder / tempo, no full-swing tools",
+  "rubric_path": "tests/rubrics/expert-rubric.md",
+  "rubric_summary": "See tests/rubrics/expert-rubric.md. Score each scenario against 10 lenses; return a single JSON object matching the rubric output schema.",
+  "judge_question": "How close is the Forefront Coach Builder output for this scenario to what the listed expert-pattern lenses would broadly recommend? Treat lenses as comparison axes, not verbatim citations. Pain / readiness red gates are absolute.",
+  "scenario_fixture": {
+    "id": "SC-07-putting-speed",
+    "title": "Putting speed — distance ladder / tempo, no full-swing tools",
+    "fault_ids": [
+      "FAULT-PUTT-SPEED"
+    ],
+    "branch_ids": {
+      "FAULT-PUTT-SPEED": "distance-calibration"
+    },
+    "gates": {
+      "pain": "green",
+      "readiness": "green",
+      "mobility": "green",
+      "contact": "green",
+      "stage": "green"
+    },
+    "client_level": "intermediate",
+    "gpl": 3,
+    "tools": [
+      "sam_puttlab"
+    ],
+    "selected_drills": [
+      "DR-WAR-001",
+      "DR-PUT-004",
+      "DR-PUT-005",
+      "DR-PUT-002"
+    ],
+    "expected_branch_intents": [
+      "putting_speed_control"
+    ],
+    "expected_t1_profile_prefix": "pt_",
+    "expected_primary_categories": [
+      "putting",
+      "warmup_prep"
+    ],
+    "forbidden_categories_primary": [
+      "full_swing",
+      "speed",
+      "ground_force",
+      "club_face_path",
+      "contact_lowpoint",
+      "short_game",
+      "psychology"
+    ],
+    "expected_session_mode": "normal",
+    "expected_session_blocks": [
+      "warmup",
+      "block1",
+      "block2",
+      "retest",
+      "reflection"
+    ],
+    "expected_expert_patterns": [
+      "distance-ladder pace",
+      "tempo as ratio not absolute",
+      "die-it-in-the-hole vs. firm strategy is a separate decision"
+    ],
+    "forbidden_language_patterns": [
+      "accelerate through the ball",
+      "head down"
+    ],
+    "expert_reference_tags": [
+      "sieckmann_short_game",
+      "short_game_chef_putting",
+      "mayo_pace"
+    ]
+  },
+  "extracted_output": {
+    "scenario_id": "SC-07-putting-speed",
+    "fault_ids": [
+      "FAULT-PUTT-SPEED"
+    ],
+    "branch_ids": {
+      "FAULT-PUTT-SPEED": "distance-calibration"
+    },
+    "intents": [
+      "putting_speed_control"
+    ],
+    "dominant_intent": "putting_speed_control",
+    "gates": {
+      "pain": "green",
+      "readiness": "green",
+      "mobility": "green",
+      "contact": "green",
+      "stage": "green"
+    },
+    "session_mode": "normal",
+    "proof_cards": [
+      {
+        "fault_id": "FAULT-PUTT-SPEED",
+        "branch_id": "distance-calibration",
+        "branch_intent": "putting_speed_control",
+        "proof_test_ids": [
+          "PC-10",
+          "PC-11",
+          "PC-07"
+        ],
+        "t1": "pt_distance_ladder",
+        "t2": "pt_tempo_map",
+        "t3": "pt_pressure_retest",
+        "proof_family": "putting"
+      }
+    ],
+    "drill_summary": [
+      {
+        "drill_id": "DR-WAR-001",
+        "category": "warmup_prep",
+        "found": true,
+        "practice_block": "warmup_prep",
+        "name": "TPI Resistance Band Activation (5 movements)"
+      },
+      {
+        "drill_id": "DR-PUT-004",
+        "category": "putting",
+        "found": true,
+        "practice_block": "blocked_acquisition",
+        "name": "Face Alignment Mirror"
+      },
+      {
+        "drill_id": "DR-PUT-005",
+        "category": "putting",
+        "found": true,
+        "practice_block": "blocked_acquisition",
+        "name": "Double-Ball Impact Roll"
+      },
+      {
+        "drill_id": "DR-PUT-002",
+        "category": "putting",
+        "found": true,
+        "practice_block": "representative_transfer",
+        "name": "Lag Ladder Speed Drill"
+      }
+    ],
+    "primary_categories": [
+      "putting",
+      "warmup_prep"
+    ],
+    "primary_drill_ids": [
+      "DR-PUT-004",
+      "DR-PUT-005"
+    ],
+    "session_blocks": [
+      {
+        "kind": "warmup",
+        "drills": [
+          {
+            "drill_id": "DR-WAR-001",
+            "category": "warmup_prep",
+            "carryover": false,
+            "note": null
+          }
+        ]
+      },
+      {
+        "kind": "block1",
+        "drills": [
+          {
+            "drill_id": "DR-PUT-004",
+            "category": "putting",
+            "carryover": false,
+            "note": null
+          }
+        ]
+      },
+      {
+        "kind": "block2",
+        "drills": [
+          {
+            "drill_id": "DR-PUT-005",
+            "category": "putting",
+            "carryover": false,
+            "note": null
+          }
+        ]
+      },
+      {
+        "kind": "retest",
+        "drills": [
+          {
+            "drill_id": "DR-PUT-002",
+            "category": "putting",
+            "carryover": false,
+            "note": null
+          }
+        ]
+      },
+      {
+        "kind": "reflection",
+        "drills": []
+      }
+    ],
+    "alignment_record": {
+      "allowed_categories": [
+        "putting"
+      ],
+      "carryover_categories": [
+        "putting"
+      ],
+      "blocked_categories": [
+        "full_swing",
+        "speed",
+        "ground_force",
+        "club_face_path",
+        "contact_lowpoint",
+        "short_game",
+        "psychology"
+      ],
+      "preferred_primary_block": "primary",
+      "allowed_carryover_blocks": [
+        "carryover",
+        "retest",
+        "reflection"
+      ],
+      "do_not_use_if": [
+        "pain_red"
+      ],
+      "session_mode": "normal",
+      "notes": "Putting speed control — distance ladder / tempo. Not full-swing."
+    },
+    "filtered_out": []
+  },
+  "deterministic_checks": [
+    {
+      "name": "expected_branch_intents_present",
+      "ok": true,
+      "detail": {
+        "expected": [
+          "putting_speed_control"
+        ],
+        "got": [
+          "putting_speed_control"
+        ]
+      }
+    },
+    {
+      "name": "t1_profile_prefix_match",
+      "ok": true,
+      "detail": {
+        "expected_prefix": "pt_",
+        "got": "pt_distance_ladder"
+      }
+    },
+    {
+      "name": "expected_primary_categories_present",
+      "ok": true,
+      "detail": {
+        "expected_subset": [
+          "putting",
+          "warmup_prep"
+        ],
+        "got": [
+          "putting",
+          "warmup_prep"
+        ],
+        "session_mode": "normal"
+      }
+    },
+    {
+      "name": "forbidden_categories_absent_primary",
+      "ok": true,
+      "detail": {
+        "forbidden": [
+          "full_swing",
+          "speed",
+          "ground_force",
+          "club_face_path",
+          "contact_lowpoint",
+          "short_game",
+          "psychology"
+        ],
+        "hits": []
+      }
+    },
+    {
+      "name": "expected_session_mode",
+      "ok": true,
+      "detail": {
+        "expected": "normal",
+        "got": "normal"
+      }
+    },
+    {
+      "name": "expected_session_blocks_present",
+      "ok": true,
+      "detail": {
+        "expected": [
+          "warmup",
+          "block1",
+          "block2",
+          "retest",
+          "reflection"
+        ],
+        "got": [
+          "warmup",
+          "block1",
+          "block2",
+          "retest",
+          "reflection"
+        ]
+      }
+    },
+    {
+      "name": "no_duplicate_primary_drills",
+      "ok": true,
+      "detail": {
+        "duplicates": []
+      }
+    },
+    {
+      "name": "pump_drill_primary_once",
+      "ok": true,
+      "detail": {
+        "primary_count": 0
+      }
+    }
+  ],
+  "deterministic_pass": true
+}

@@ -1,0 +1,324 @@
+{
+  "schema_version": "ff-expert-judge-packet/0.1",
+  "scenario_id": "SC-02-no-lead-brake-slide",
+  "scenario_title": "Slide / no-lead-brake — lead-side post + recenter, not face mechanics",
+  "rubric_path": "tests/rubrics/expert-rubric.md",
+  "rubric_summary": "See tests/rubrics/expert-rubric.md. Score each scenario against 10 lenses; return a single JSON object matching the rubric output schema.",
+  "judge_question": "How close is the Forefront Coach Builder output for this scenario to what the listed expert-pattern lenses would broadly recommend? Treat lenses as comparison axes, not verbatim citations. Pain / readiness red gates are absolute.",
+  "scenario_fixture": {
+    "id": "SC-02-no-lead-brake-slide",
+    "title": "Slide / no-lead-brake — lead-side post + recenter, not face mechanics",
+    "fault_ids": [
+      "FAULT-SLIDE"
+    ],
+    "branch_ids": {
+      "FAULT-SLIDE": "no-lead-brake"
+    },
+    "gates": {
+      "pain": "green",
+      "readiness": "green",
+      "mobility": "green",
+      "contact": "green",
+      "stage": "green"
+    },
+    "client_level": "intermediate",
+    "gpl": 3,
+    "tools": [
+      "trackman_3d",
+      "force_plate"
+    ],
+    "selected_drills": [
+      "DR-WAR-001",
+      "DR-GRF-002",
+      "DR-GRF-004",
+      "DR-CON-003"
+    ],
+    "expected_branch_intents": [
+      "ground_force_pressure"
+    ],
+    "expected_t1_profile_prefix": "gf_",
+    "expected_primary_categories": [
+      "ground_force",
+      "contact_lowpoint",
+      "warmup_prep"
+    ],
+    "forbidden_categories_primary": [
+      "psychology",
+      "club_face_path",
+      "speed"
+    ],
+    "expected_session_mode": "normal",
+    "expected_session_blocks": [
+      "warmup",
+      "block1",
+      "block2",
+      "retest",
+      "reflection"
+    ],
+    "expected_expert_patterns": [
+      "lead-side braking / vertical force timing",
+      "external target / distal cue",
+      "pressure shift sequencing pelvis-then-thorax"
+    ],
+    "forbidden_language_patterns": [
+      "lateral hip slide stop",
+      "keep your head down"
+    ],
+    "expert_reference_tags": [
+      "lynn_kwon_ground_force",
+      "winkelman_external_cue",
+      "wulf_distal_focus"
+    ]
+  },
+  "extracted_output": {
+    "scenario_id": "SC-02-no-lead-brake-slide",
+    "fault_ids": [
+      "FAULT-SLIDE"
+    ],
+    "branch_ids": {
+      "FAULT-SLIDE": "no-lead-brake"
+    },
+    "intents": [
+      "ground_force_pressure"
+    ],
+    "dominant_intent": "ground_force_pressure",
+    "gates": {
+      "pain": "green",
+      "readiness": "green",
+      "mobility": "green",
+      "contact": "green",
+      "stage": "green"
+    },
+    "session_mode": "normal",
+    "proof_cards": [
+      {
+        "fault_id": "FAULT-SLIDE",
+        "branch_id": "no-lead-brake",
+        "branch_intent": "ground_force_pressure",
+        "proof_test_ids": [
+          "PC-01",
+          "PC-06",
+          "PC-04"
+        ],
+        "t1": "gf_recenter_station",
+        "t2": "gf_lead_finish_strike",
+        "t3": "gf_variation_retest",
+        "proof_family": "full_swing"
+      }
+    ],
+    "drill_summary": [
+      {
+        "drill_id": "DR-WAR-001",
+        "category": "warmup_prep",
+        "found": true,
+        "practice_block": "warmup_prep",
+        "name": "TPI Resistance Band Activation (5 movements)"
+      },
+      {
+        "drill_id": "DR-GRF-002",
+        "category": "ground_force",
+        "found": true,
+        "practice_block": "serial_variability",
+        "name": "Step Drill (Lateral → Rotational Transition)"
+      },
+      {
+        "drill_id": "DR-GRF-004",
+        "category": "ground_force",
+        "found": true,
+        "practice_block": "blocked_acquisition",
+        "name": "Step-and-Pump Trail Load"
+      },
+      {
+        "drill_id": "DR-CON-003",
+        "category": "contact_lowpoint",
+        "found": true,
+        "practice_block": "serial_variability",
+        "name": "Line-in-Front Low-Point Brush"
+      }
+    ],
+    "primary_categories": [
+      "ground_force",
+      "contact_lowpoint",
+      "warmup_prep"
+    ],
+    "primary_drill_ids": [
+      "DR-GRF-002",
+      "DR-GRF-004",
+      "DR-CON-003"
+    ],
+    "session_blocks": [
+      {
+        "kind": "warmup",
+        "drills": [
+          {
+            "drill_id": "DR-WAR-001",
+            "category": "warmup_prep",
+            "carryover": false,
+            "note": null
+          }
+        ]
+      },
+      {
+        "kind": "block1",
+        "drills": [
+          {
+            "drill_id": "DR-GRF-002",
+            "category": "ground_force",
+            "carryover": false,
+            "note": null
+          },
+          {
+            "drill_id": "DR-GRF-004",
+            "category": "ground_force",
+            "carryover": false,
+            "note": null
+          }
+        ]
+      },
+      {
+        "kind": "block2",
+        "drills": [
+          {
+            "drill_id": "DR-CON-003",
+            "category": "contact_lowpoint",
+            "carryover": false,
+            "note": null
+          }
+        ]
+      },
+      {
+        "kind": "retest",
+        "drills": []
+      },
+      {
+        "kind": "reflection",
+        "drills": []
+      }
+    ],
+    "alignment_record": {
+      "allowed_categories": [
+        "warmup_prep",
+        "ground_force",
+        "contact_lowpoint"
+      ],
+      "carryover_categories": [
+        "full_swing"
+      ],
+      "blocked_categories": [
+        "club_face_path",
+        "speed",
+        "psychology"
+      ],
+      "preferred_primary_block": "primary",
+      "allowed_carryover_blocks": [
+        "carryover",
+        "retest",
+        "reflection"
+      ],
+      "do_not_use_if": [
+        "pain_red",
+        "mobility_red"
+      ],
+      "primary_once_drills": [
+        "DR-GRF-004"
+      ],
+      "session_mode": "normal",
+      "notes": "Pressure / GRF first. Face-only and wrist-only drills are OUT as primary."
+    },
+    "filtered_out": []
+  },
+  "deterministic_checks": [
+    {
+      "name": "expected_branch_intents_present",
+      "ok": true,
+      "detail": {
+        "expected": [
+          "ground_force_pressure"
+        ],
+        "got": [
+          "ground_force_pressure"
+        ]
+      }
+    },
+    {
+      "name": "t1_profile_prefix_match",
+      "ok": true,
+      "detail": {
+        "expected_prefix": "gf_",
+        "got": "gf_recenter_station"
+      }
+    },
+    {
+      "name": "expected_primary_categories_present",
+      "ok": true,
+      "detail": {
+        "expected_subset": [
+          "ground_force",
+          "contact_lowpoint",
+          "warmup_prep"
+        ],
+        "got": [
+          "ground_force",
+          "contact_lowpoint",
+          "warmup_prep"
+        ],
+        "session_mode": "normal"
+      }
+    },
+    {
+      "name": "forbidden_categories_absent_primary",
+      "ok": true,
+      "detail": {
+        "forbidden": [
+          "psychology",
+          "club_face_path",
+          "speed"
+        ],
+        "hits": []
+      }
+    },
+    {
+      "name": "expected_session_mode",
+      "ok": true,
+      "detail": {
+        "expected": "normal",
+        "got": "normal"
+      }
+    },
+    {
+      "name": "expected_session_blocks_present",
+      "ok": true,
+      "detail": {
+        "expected": [
+          "warmup",
+          "block1",
+          "block2",
+          "retest",
+          "reflection"
+        ],
+        "got": [
+          "warmup",
+          "block1",
+          "block2",
+          "retest",
+          "reflection"
+        ]
+      }
+    },
+    {
+      "name": "no_duplicate_primary_drills",
+      "ok": true,
+      "detail": {
+        "duplicates": []
+      }
+    },
+    {
+      "name": "pump_drill_primary_once",
+      "ok": true,
+      "detail": {
+        "primary_count": 1
+      }
+    }
+  ],
+  "deterministic_pass": true
+}

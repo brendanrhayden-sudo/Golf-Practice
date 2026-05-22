@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Forefront Golf — Coach Builder</title>
+  <meta name="description" content="Guided coach workflow for the Forefront Golf system: gate → layer → visible flaw → diagnostic branch → GP-L stage → tool/drill selection → session build → output. Motor-learning strict. No client PII." />
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+  <link rel="stylesheet" href="assets/style.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2316201e'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Source Serif Pro,serif' font-weight='700' font-size='18' fill='%23f5f1e8'%3EFF%3C/text%3E%3C/svg%3E" />
+</head>
+<body>
+
+<button id="menu-toggle" class="menu-toggle">Menu</button>
+
+<div class="app">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside id="sidebar" class="sidebar" aria-label="Coach Builder navigation">
+    <div class="brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 32 32" width="22" height="22" aria-label="Forefront Golf">
+          <path d="M6 24 L6 8 L20 8 L20 12 L11 12 L11 14 L18 14 L18 18 L11 18 L11 24 Z" fill="currentColor"/>
+          <circle cx="25" cy="22" r="3" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <span class="title">Forefront Golf</span>
+        <span class="sub">Coach Builder · v0.1</span>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <div class="label">Workflow</div>
+      <ul class="nav-list" id="nav-views">
+        <li><button data-view="wizard" class="active">Coach Wizard <span class="fmid">CB-1</span></button></li>
+        <li><button data-view="session">Session Builder <span class="fmid">CB-2</span></button></li>
+        <li><button data-view="library">Drill Library <span class="fmid">CB-3</span></button></li>
+        <li><button data-view="output">Outputs <span class="fmid">CB-4</span></button></li>
+      </ul>
+    </div>
+
+    <div class="nav-group">
+      <div class="label">Reference</div>
+      <ul class="nav-list">
+        <li><button data-view="reference">Operating rules <span class="fmid">CB-R</span></button></li>
+        <li><button data-view="handoff">Handoff &amp; deploy <span class="fmid">CB-H</span></button></li>
+      </ul>
+    </div>
+
+    <div class="legend">
+      <div style="font-weight:600; color: var(--ink-2); margin-bottom:.35rem;">Drill-card rules</div>
+      <div class="row"><span class="dot" style="background: var(--teal)"></span> One external cue per rep</div>
+      <div class="row"><span class="dot" style="background: var(--moss)"></span> Constraints first</div>
+      <div class="row"><span class="dot" style="background: var(--amber)"></span> Feedback fades</div>
+      <div class="row"><span class="dot" style="background: var(--crimson)"></span> Distal beats proximal</div>
+      <div style="margin-top:.5rem; padding-top:.4rem; border-top: 1px solid var(--rule); font-size: 11px;">
+        Per <a href="https://pubmed.ncbi.nlm.nih.gov/17941543/" target="_blank" rel="noopener">Wulf &amp; Su 2007</a>, <a href="https://www.otpbooks.com/coaching-movements-and-skills-with-nick-winkelman/" target="_blank" rel="noopener">Winkelman</a>, <a href="https://perceptionaction.com/book/" target="_blank" rel="noopener">Rob Gray CLA</a>.
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main class="main">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="hero-card dark">
+        <div class="eyebrow">Forefront Golf · Coach Builder · v0.1 PoC</div>
+        <h1>From flaw to session to printable card — in eight steps.</h1>
+        <p>Field-manual logic, motor-learning strict. Pick a gate, a layer, a visible flaw, the diagnostic version of that flaw, and a GP-L stage. The builder filters drills, lays out time blocks, and prints three views from the same selection: coach plan, client assignment, printable card.</p>
+        <div class="kvs">
+          <div class="kv"><div class="k">Primary 3D layer</div><div class="v">TrackMan 3D</div></div>
+          <div class="kv"><div class="k">Speed tool</div><div class="v">Mach 3 — pattern &amp; intent</div></div>
+          <div class="kv"><div class="k">Cue authority</div><div class="v">Winkelman · Wulf · Gray</div></div>
+          <div class="kv"><div class="k">Default rule</div><div class="v">One dominant constraint</div></div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="eyebrow">Eight-step workflow</div>
+        <h2 style="font-size:1.05rem; margin-bottom:.5rem;">Run a session</h2>
+        <ol style="margin:0 0 .4rem 1.1rem; padding:0; color:var(--ink-2); font-size:13px; line-height:1.6;">
+          <li><b>Gate</b> — safe for today?</li>
+          <li><b>Layer</b> — ball, club, body, equip, psych, strategy?</li>
+          <li><b>Visible flaw</b> — choose the pattern before cause hypotheses</li>
+          <li><b>Diagnose</b> — pick the version and run the matching proof test card</li>
+          <li><b>GP-L</b> — pick the practice rung</li>
+          <li><b>Tools</b> — TrackMan / Mach 3 / no-tech / putting / short game / course</li>
+          <li><b>Drills</b> — filtered candidates with “why referenced” logic</li>
+          <li><b>Build / output</b> — warm-up · blocks · transfer · retest · homework · card</li>
+        </ol>
+        <div class="assessment-stub">
+          <div class="eyebrow">Next front-end layer</div>
+          <strong>Full assessment protocol will sit before this flow.</strong>
+          <span>Assessment will populate gates, fault candidates, TrackMan 3D proof targets, and first-session priorities. This build stays focused on diagnostic routing and session assembly.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ VIEW: WIZARD ============ -->
+    <section id="view-wizard" class="view">
+      <div id="wizard-root"></div>
+    </section>
+
+    <!-- ============ VIEW: SESSION ============ -->
+    <section id="view-session" class="view" hidden>
+      <div id="session-root"></div>
+    </section>
+
+    <!-- ============ VIEW: LIBRARY ============ -->
+    <section id="view-library" class="view" hidden>
+      <div id="library-root"></div>
+    </section>
+
+    <!-- ============ VIEW: OUTPUT ============ -->
+    <section id="view-output" class="view" hidden>
+      <div id="output-root"></div>
+    </section>
+
+    <!-- ============ VIEW: REFERENCE ============ -->
+    <section id="view-reference" class="view" hidden>
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Operating rules</h2>
+            <p style="margin: .3rem 0 0; font-size: 13px;">The six rules every Forefront drill card must obey. Built from the QA synthesis.</p>
+          </div>
+          <span class="section-tag">CB-R · v0.1</span>
+        </div>
+        <ol style="margin: 0; padding-left: 1.1rem; font-size: 14px; line-height: 1.7;">
+          <li><b>One cue. External. Before movement.</b> Never during the rep, never after. Source: <a href="https://www.otpbooks.com/coaching-movements-and-skills-with-nick-winkelman/" target="_blank" rel="noopener">Winkelman — Coaching Loop</a>; <a href="https://pubmed.ncbi.nlm.nih.gov/26833314/" target="_blank" rel="noopener">Wulf &amp; Lewthwaite OPTIMAL 2016</a>.</li>
+          <li><b>Body part → fail. Movement effect → pass.</b> "Swing the club through to the target" passes. "Keep your lead arm straight" fails the cue field. Per <a href="https://pubmed.ncbi.nlm.nih.gov/17941543/" target="_blank" rel="noopener">Wulf &amp; Su 2007</a> and <a href="https://pubmed.ncbi.nlm.nih.gov/37952707/" target="_blank" rel="noopener">An &amp; Wulf 2024</a>.</li>
+          <li><b>Fade feedback as skill develops.</b> Novice ≥50%, intermediate 33%, advanced bandwidth or self-controlled. Per <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10899359/" target="_blank" rel="noopener">Barzyk &amp; Gruber 2024</a> guidance hypothesis.</li>
+          <li><b>Distal beats proximal for far-aiming shots.</b> Ball-flight-to-target cues outperform club-path cues for drives and approach. Per <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10244639/" target="_blank" rel="noopener">Frontiers ecological dynamics 2023</a>.</li>
+          <li><b>Constraints first, cues second.</b> If a task manipulation (slope, gate, lie) can produce the correction through self-organization, that is the primary intervention. Per <a href="https://perceptionaction.com/book/" target="_blank" rel="noopener">Rob Gray, CLA</a>.</li>
+          <li><b>Representativeness matters.</b> Low-fidelity drills carry a transfer note. They are not the primary acquisition vehicle. Per Rob Gray, Representative Learning Design.</li>
+        </ol>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Source attribution</h2>
+            <p style="margin:.3rem 0 0; font-size: 13px;">Brendan: the "Rob Wolff" entry in earlier drafts is a phonetic confusion of <b>Gabriele Wulf</b>. All external-focus claims in this app cite Wulf directly.</p>
+          </div>
+          <span class="section-tag">CB-R · sources</span>
+        </div>
+        <table>
+          <thead><tr><th>Author</th><th>Contribution to this app</th><th>Primary source</th></tr></thead>
+          <tbody>
+            <tr><td>Gabriele Wulf</td><td>External-focus framework; distal &gt; proximal; OPTIMAL theory</td><td><a href="https://pubmed.ncbi.nlm.nih.gov/17941543/" target="_blank" rel="noopener">Wulf &amp; Su 2007</a>, <a href="https://pubmed.ncbi.nlm.nih.gov/37952707/" target="_blank" rel="noopener">An &amp; Wulf 2024</a></td></tr>
+            <tr><td>Nick Winkelman</td><td>Cue construction syntax; 3 Rs debrief; one-cue-per-rep rule</td><td><a href="https://www.otpbooks.com/coaching-movements-and-skills-with-nick-winkelman/" target="_blank" rel="noopener">Language of Coaching</a></td></tr>
+            <tr><td>Rob Gray</td><td>CLA, Representative Learning Design, constraint_alternative field</td><td><a href="https://perceptionaction.com/book/" target="_blank" rel="noopener">How We Learn to Move</a></td></tr>
+            <tr><td>Salmoni, Schmidt &amp; Walter</td><td>Guidance hypothesis; feedback fading schedule</td><td><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10899359/" target="_blank" rel="noopener">Barzyk &amp; Gruber 2024 review</a></td></tr>
+            <tr><td>Carson &amp; Collins (caveat)</td><td>Internal focus allowed only for deliberate technical refinement with re-automation planned</td><td>Cited in <a href="https://toddhargrove.substack.com/p/focus-of-attention-in-golf" target="_blank" rel="noopener">Hargrove summary</a></td></tr>
+            <tr><td>Forefront Master Manual</td><td>FM-100 GP map, FM-256 fault-to-force, FM-300 diagnostic ladder, FM-410 TrackMan 3D map</td><td>forefront-golf-master-manual-shell-v0-1.pplx.md (workspace)</td></tr>
+            <tr><td>Drill-library synthesis</td><td>Mach 3 tool matrix, drill taxonomy, TrackMan, SuperSpeed, TPI protocols</td><td>forefront-golf-drill-library-synthesis.pplx.md (workspace)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ============ VIEW: HANDOFF ============ -->
+    <section id="view-handoff" class="view" hidden>
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Handoff &amp; deployment</h2>
+            <p style="margin:.3rem 0 0; font-size:13px;">How to take this from preview URL to a fixed <code>forefrontops.tech</code> subdomain.</p>
+          </div>
+          <span class="section-tag">CB-H · ops</span>
+        </div>
+
+        <h3>Where the data lives</h3>
+        <ul style="font-size: 13.5px; line-height: 1.7;">
+          <li><code>data/drills.js</code> — core seed drills with the full schema. <code>data/deepening.js</code> appends the expanded proof-of-concept library, practice-block metadata, and motor-learning stage alignment.</li>
+          <li><code>data/drills.js</code> also exports the lookup tables: <code>FF_GATES</code>, <code>FF_LAYERS</code>, <code>FF_FAULTS</code>, <code>FF_GPL</code>, <code>FF_TOOLS</code>, <code>FF_GOALS</code>, <code>FF_DURATIONS</code>.</li>
+          <li><code>assets/style.css</code> — design tokens at the top (<code>--paper</code>, <code>--ink</code>, <code>--teal</code>…). Change once, propagates everywhere.</li>
+          <li><code>assets/app.js</code> — all UI logic. No build step. No framework. Plain ES6 modules using global namespace.</li>
+        </ul>
+
+        <h3>State model</h3>
+        <p>State is held in a single in-memory <code>FF.state</code> object. Nothing persisted. No <code>localStorage</code>, no cookies, no IndexedDB — per the sandbox rules and Forefront PII policy. Refresh = clean slate.</p>
+
+        <h3>Deploy now (Perplexity preview)</h3>
+        <p>Parent agent runs <code>deploy_website(project_path="forefront-golf-coach-builder", site_name="Forefront Golf Coach Builder")</code>. Static bundle; no backend.</p>
+
+        <h3>Move to <code>forefrontops.tech</code> subdomain</h3>
+        <ol style="font-size: 13.5px; line-height: 1.7;">
+          <li>Wrap this folder in a Next.js 14 app (App Router). Each top-level view becomes a route: <code>/wizard</code>, <code>/session</code>, <code>/library</code>, <code>/output</code>. The drill array becomes <code>lib/drills.ts</code> exported as a typed const.</li>
+          <li>Deploy to Vercel under the <code>forefrontops</code> project.</li>
+          <li>In Vercel project → Domains → add <code>coach.forefrontops.tech</code> (or whichever subdomain). Cloudflare/registrar: add CNAME → <code>cname.vercel-dns.com</code>. TLS auto.</li>
+          <li>Keep <code>/supabase/migration.sql</code> as a separate, opt-in step — do not auto-run.</li>
+        </ol>
+
+        <h3>Supabase wiring (when ready)</h3>
+        <ol style="font-size: 13.5px; line-height: 1.7;">
+          <li>Open <code>supabase/migration.sql</code>. It defines three new tables (<code>forefront_golf_drill_cards</code>, <code>forefront_golf_session_templates</code>, <code>forefront_golf_session_outputs</code>) in their own schema and never touches existing Forefront tables.</li>
+          <li>Run it manually in the Supabase SQL editor. Verify in <code>information_schema.tables</code> that nothing else changed.</li>
+          <li>Add the seed step that inserts the static <code>FF_DRILLS</code> rows. RLS policies are stubbed permissive-read, write-restricted — tighten before any client write.</li>
+        </ol>
+
+        <h3>What this PoC does NOT do</h3>
+        <ul style="font-size: 13.5px; line-height: 1.7;">
+          <li>No DB writes. No mutation. No live data fetch.</li>
+          <li>No client identifiers. No phone numbers. No SMS. No cron. No email.</li>
+          <li>No drill QA enforcement at write time — drill cards are author-curated. The QA rules in <a href="#" data-view="reference">Operating Rules</a> are the human-review checklist.</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<div id="toast" class="toast">Copied</div>
+
+<script src="data/drills.js"></script>
+<script src="data/deepening.js"></script>
+<script src="data/diagnostic-layer.js"></script>
+<script src="data/alignment-layer.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,323 @@
+{
+  "schema_version": "ff-expert-judge-packet/0.1",
+  "scenario_id": "SC-03-slice-face-start",
+  "scenario_title": "Slice face-start — face/path corridor primary, GRF carryover",
+  "rubric_path": "tests/rubrics/expert-rubric.md",
+  "rubric_summary": "See tests/rubrics/expert-rubric.md. Score each scenario against 10 lenses; return a single JSON object matching the rubric output schema.",
+  "judge_question": "How close is the Forefront Coach Builder output for this scenario to what the listed expert-pattern lenses would broadly recommend? Treat lenses as comparison axes, not verbatim citations. Pain / readiness red gates are absolute.",
+  "scenario_fixture": {
+    "id": "SC-03-slice-face-start",
+    "title": "Slice face-start — face/path corridor primary, GRF carryover",
+    "fault_ids": [
+      "FAULT-SLICE"
+    ],
+    "branch_ids": {
+      "FAULT-SLICE": "face-start"
+    },
+    "gates": {
+      "pain": "green",
+      "readiness": "green",
+      "mobility": "green",
+      "contact": "green",
+      "stage": "green"
+    },
+    "client_level": "intermediate",
+    "gpl": 3,
+    "tools": [
+      "trackman_3d",
+      "hackmotion"
+    ],
+    "selected_drills": [
+      "DR-WAR-001",
+      "DR-CFP-001",
+      "DR-CFP-003",
+      "DR-CON-001"
+    ],
+    "expected_branch_intents": [
+      "face_control"
+    ],
+    "expected_t1_profile_prefix": "fp_",
+    "expected_primary_categories": [
+      "club_face_path",
+      "contact_lowpoint",
+      "warmup_prep"
+    ],
+    "forbidden_categories_primary": [
+      "ground_force",
+      "speed",
+      "psychology"
+    ],
+    "expected_session_mode": "normal",
+    "expected_session_blocks": [
+      "warmup",
+      "block1",
+      "block2",
+      "retest",
+      "reflection"
+    ],
+    "expected_expert_patterns": [
+      "face-to-path number is the dominant driver of start-line and curve",
+      "external corridor / gate constraint",
+      "TrackMan face-angle as proof, not arm cue"
+    ],
+    "forbidden_language_patterns": [
+      "keep your lead arm straight",
+      "stay connected",
+      "swing on plane"
+    ],
+    "expert_reference_tags": [
+      "trackman_face_path",
+      "winkelman_external_cue",
+      "wulf_distal_focus",
+      "como_hackmotion_release"
+    ]
+  },
+  "extracted_output": {
+    "scenario_id": "SC-03-slice-face-start",
+    "fault_ids": [
+      "FAULT-SLICE"
+    ],
+    "branch_ids": {
+      "FAULT-SLICE": "face-start"
+    },
+    "intents": [
+      "face_control"
+    ],
+    "dominant_intent": "face_control",
+    "gates": {
+      "pain": "green",
+      "readiness": "green",
+      "mobility": "green",
+      "contact": "green",
+      "stage": "green"
+    },
+    "session_mode": "normal",
+    "proof_cards": [
+      {
+        "fault_id": "FAULT-SLICE",
+        "branch_id": "face-start",
+        "branch_intent": "face_control",
+        "proof_test_ids": [
+          "PC-03",
+          "PC-05",
+          "PC-01"
+        ],
+        "t1": "fp_corridor",
+        "t2": "fp_trackman_face",
+        "t3": "fp_curve_variation",
+        "proof_family": "full_swing"
+      }
+    ],
+    "drill_summary": [
+      {
+        "drill_id": "DR-WAR-001",
+        "category": "warmup_prep",
+        "found": true,
+        "practice_block": "warmup_prep",
+        "name": "TPI Resistance Band Activation (5 movements)"
+      },
+      {
+        "drill_id": "DR-CFP-001",
+        "category": "club_face_path",
+        "found": true,
+        "practice_block": "representative_transfer",
+        "name": "TrackMan Corridor — Face Angle"
+      },
+      {
+        "drill_id": "DR-CFP-003",
+        "category": "club_face_path",
+        "found": true,
+        "practice_block": "serial_variability",
+        "name": "TrackMan Face-to-Path Corridor"
+      },
+      {
+        "drill_id": "DR-CON-001",
+        "category": "contact_lowpoint",
+        "found": true,
+        "practice_block": "serial_variability",
+        "name": "Divot Board Strike Audit"
+      }
+    ],
+    "primary_categories": [
+      "club_face_path",
+      "contact_lowpoint",
+      "warmup_prep"
+    ],
+    "primary_drill_ids": [
+      "DR-CFP-001",
+      "DR-CFP-003"
+    ],
+    "session_blocks": [
+      {
+        "kind": "warmup",
+        "drills": [
+          {
+            "drill_id": "DR-WAR-001",
+            "category": "warmup_prep",
+            "carryover": false,
+            "note": null
+          }
+        ]
+      },
+      {
+        "kind": "block1",
+        "drills": [
+          {
+            "drill_id": "DR-CFP-001",
+            "category": "club_face_path",
+            "carryover": false,
+            "note": null
+          }
+        ]
+      },
+      {
+        "kind": "block2",
+        "drills": [
+          {
+            "drill_id": "DR-CFP-003",
+            "category": "club_face_path",
+            "carryover": false,
+            "note": null
+          }
+        ]
+      },
+      {
+        "kind": "retest",
+        "drills": [
+          {
+            "drill_id": "DR-CON-001",
+            "category": "contact_lowpoint",
+            "carryover": false,
+            "note": null
+          }
+        ]
+      },
+      {
+        "kind": "reflection",
+        "drills": []
+      }
+    ],
+    "alignment_record": {
+      "allowed_categories": [
+        "warmup_prep",
+        "club_face_path",
+        "contact_lowpoint"
+      ],
+      "carryover_categories": [
+        "full_swing"
+      ],
+      "blocked_categories": [
+        "ground_force",
+        "speed",
+        "psychology"
+      ],
+      "preferred_primary_block": "primary",
+      "allowed_carryover_blocks": [
+        "carryover",
+        "retest",
+        "reflection"
+      ],
+      "do_not_use_if": [
+        "pain_red",
+        "mobility_red"
+      ],
+      "session_mode": "normal",
+      "notes": "Face/path work — external corridor cues. Ground-force is OUT."
+    },
+    "filtered_out": []
+  },
+  "deterministic_checks": [
+    {
+      "name": "expected_branch_intents_present",
+      "ok": true,
+      "detail": {
+        "expected": [
+          "face_control"
+        ],
+        "got": [
+          "face_control"
+        ]
+      }
+    },
+    {
+      "name": "t1_profile_prefix_match",
+      "ok": true,
+      "detail": {
+        "expected_prefix": "fp_",
+        "got": "fp_corridor"
+      }
+    },
+    {
+      "name": "expected_primary_categories_present",
+      "ok": true,
+      "detail": {
+        "expected_subset": [
+          "club_face_path",
+          "contact_lowpoint",
+          "warmup_prep"
+        ],
+        "got": [
+          "club_face_path",
+          "contact_lowpoint",
+          "warmup_prep"
+        ],
+        "session_mode": "normal"
+      }
+    },
+    {
+      "name": "forbidden_categories_absent_primary",
+      "ok": true,
+      "detail": {
+        "forbidden": [
+          "ground_force",
+          "speed",
+          "psychology"
+        ],
+        "hits": []
+      }
+    },
+    {
+      "name": "expected_session_mode",
+      "ok": true,
+      "detail": {
+        "expected": "normal",
+        "got": "normal"
+      }
+    },
+    {
+      "name": "expected_session_blocks_present",
+      "ok": true,
+      "detail": {
+        "expected": [
+          "warmup",
+          "block1",
+          "block2",
+          "retest",
+          "reflection"
+        ],
+        "got": [
+          "warmup",
+          "block1",
+          "block2",
+          "retest",
+          "reflection"
+        ]
+      }
+    },
+    {
+      "name": "no_duplicate_primary_drills",
+      "ok": true,
+      "detail": {
+        "duplicates": []
+      }
+    },
+    {
+      "name": "pump_drill_primary_once",
+      "ok": true,
+      "detail": {
+        "primary_count": 0
+      }
+    }
+  ],
+  "deterministic_pass": true
+}

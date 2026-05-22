@@ -1,0 +1,315 @@
+{
+  "schema_version": "ff-expert-judge-packet/0.1",
+  "scenario_id": "SC-12-course-decision-club-selection",
+  "scenario_title": "Course-transfer decision / club-selection mismatch — strategy primary, mechanics carryover",
+  "rubric_path": "tests/rubrics/expert-rubric.md",
+  "rubric_summary": "See tests/rubrics/expert-rubric.md. Score each scenario against 10 lenses; return a single JSON object matching the rubric output schema.",
+  "judge_question": "How close is the Forefront Coach Builder output for this scenario to what the listed expert-pattern lenses would broadly recommend? Treat lenses as comparison axes, not verbatim citations. Pain / readiness red gates are absolute.",
+  "scenario_fixture": {
+    "id": "SC-12-course-decision-club-selection",
+    "title": "Course-transfer decision / club-selection mismatch — strategy primary, mechanics carryover",
+    "fault_ids": [
+      "FAULT-CLUB-SELECTION-MISMATCH"
+    ],
+    "branch_ids": {
+      "FAULT-CLUB-SELECTION-MISMATCH": "carry-window-unknown"
+    },
+    "gates": {
+      "pain": "green",
+      "readiness": "green",
+      "mobility": "green",
+      "contact": "green",
+      "stage": "green"
+    },
+    "client_level": "intermediate",
+    "gpl": 4,
+    "tools": [
+      "trackman_shot_analysis"
+    ],
+    "selected_drills": [
+      "DR-WAR-001",
+      "DR-XFR-001",
+      "DR-XFR-002",
+      "DR-PSY-003"
+    ],
+    "expected_branch_intents": [
+      "course_decision"
+    ],
+    "expected_t1_profile_prefix": "cd_",
+    "expected_primary_categories": [
+      "course_transfer",
+      "psychology",
+      "warmup_prep"
+    ],
+    "forbidden_categories_primary": [
+      "speed"
+    ],
+    "expected_session_mode": "normal",
+    "expected_session_blocks": [
+      "warmup",
+      "block1",
+      "block2",
+      "retest",
+      "reflection"
+    ],
+    "expected_expert_patterns": [
+      "decision audit before mechanics",
+      "shot-pattern map vs. pin chart",
+      "routine / commitment proof rather than swing edit"
+    ],
+    "forbidden_language_patterns": [
+      "just commit",
+      "be aggressive",
+      "trust it"
+    ],
+    "expert_reference_tags": [
+      "scott_fawcett_decade",
+      "broadie_strokes_gained_strategy",
+      "forefront_course_transfer"
+    ]
+  },
+  "extracted_output": {
+    "scenario_id": "SC-12-course-decision-club-selection",
+    "fault_ids": [
+      "FAULT-CLUB-SELECTION-MISMATCH"
+    ],
+    "branch_ids": {
+      "FAULT-CLUB-SELECTION-MISMATCH": "carry-window-unknown"
+    },
+    "intents": [
+      "course_decision"
+    ],
+    "dominant_intent": "course_decision",
+    "gates": {
+      "pain": "green",
+      "readiness": "green",
+      "mobility": "green",
+      "contact": "green",
+      "stage": "green"
+    },
+    "session_mode": "normal",
+    "proof_cards": [
+      {
+        "fault_id": "FAULT-CLUB-SELECTION-MISMATCH",
+        "branch_id": "carry-window-unknown",
+        "branch_intent": "course_decision",
+        "proof_test_ids": [
+          "PC-14",
+          "PC-07"
+        ],
+        "t1": "cd_decision_audit",
+        "t2": "cd_routine_proof",
+        "t3": "cd_random_transfer",
+        "proof_family": "equipment"
+      }
+    ],
+    "drill_summary": [
+      {
+        "drill_id": "DR-WAR-001",
+        "category": "warmup_prep",
+        "found": true,
+        "practice_block": "warmup_prep",
+        "name": "TPI Resistance Band Activation (5 movements)"
+      },
+      {
+        "drill_id": "DR-XFR-001",
+        "category": "course_transfer",
+        "found": true,
+        "practice_block": "representative_transfer",
+        "name": "One-Shot Random Drill (Range Transfer)"
+      },
+      {
+        "drill_id": "DR-XFR-002",
+        "category": "course_transfer",
+        "found": true,
+        "practice_block": "representative_transfer",
+        "name": "Simulated Hole Sequence"
+      },
+      {
+        "drill_id": "DR-PSY-003",
+        "category": "psychology",
+        "found": true,
+        "practice_block": "reflection",
+        "name": "Ugly-Practice Normalizer"
+      }
+    ],
+    "primary_categories": [
+      "course_transfer",
+      "psychology",
+      "warmup_prep"
+    ],
+    "primary_drill_ids": [
+      "DR-XFR-001",
+      "DR-XFR-002"
+    ],
+    "session_blocks": [
+      {
+        "kind": "warmup",
+        "drills": [
+          {
+            "drill_id": "DR-WAR-001",
+            "category": "warmup_prep",
+            "carryover": false,
+            "note": null
+          }
+        ]
+      },
+      {
+        "kind": "block1",
+        "drills": [
+          {
+            "drill_id": "DR-XFR-001",
+            "category": "course_transfer",
+            "carryover": false,
+            "note": null
+          }
+        ]
+      },
+      {
+        "kind": "block2",
+        "drills": [
+          {
+            "drill_id": "DR-XFR-002",
+            "category": "course_transfer",
+            "carryover": false,
+            "note": null
+          }
+        ]
+      },
+      {
+        "kind": "retest",
+        "drills": [
+          {
+            "drill_id": "DR-PSY-003",
+            "category": "psychology",
+            "carryover": false,
+            "note": null
+          }
+        ]
+      },
+      {
+        "kind": "reflection",
+        "drills": []
+      }
+    ],
+    "alignment_record": {
+      "allowed_categories": [
+        "warmup_prep",
+        "course_transfer",
+        "psychology"
+      ],
+      "carryover_categories": [
+        "full_swing",
+        "short_game"
+      ],
+      "blocked_categories": [
+        "speed"
+      ],
+      "preferred_primary_block": "primary",
+      "allowed_carryover_blocks": [
+        "carryover",
+        "scoring",
+        "retest",
+        "reflection"
+      ],
+      "do_not_use_if": [
+        "pain_red"
+      ],
+      "session_mode": "normal",
+      "notes": "Course / decision — strategy primary. Mechanics carryover only."
+    },
+    "filtered_out": []
+  },
+  "deterministic_checks": [
+    {
+      "name": "expected_branch_intents_present",
+      "ok": true,
+      "detail": {
+        "expected": [
+          "course_decision"
+        ],
+        "got": [
+          "course_decision"
+        ]
+      }
+    },
+    {
+      "name": "t1_profile_prefix_match",
+      "ok": true,
+      "detail": {
+        "expected_prefix": "cd_",
+        "got": "cd_decision_audit"
+      }
+    },
+    {
+      "name": "expected_primary_categories_present",
+      "ok": true,
+      "detail": {
+        "expected_subset": [
+          "course_transfer",
+          "psychology",
+          "warmup_prep"
+        ],
+        "got": [
+          "course_transfer",
+          "psychology",
+          "warmup_prep"
+        ],
+        "session_mode": "normal"
+      }
+    },
+    {
+      "name": "forbidden_categories_absent_primary",
+      "ok": true,
+      "detail": {
+        "forbidden": [
+          "speed"
+        ],
+        "hits": []
+      }
+    },
+    {
+      "name": "expected_session_mode",
+      "ok": true,
+      "detail": {
+        "expected": "normal",
+        "got": "normal"
+      }
+    },
+    {
+      "name": "expected_session_blocks_present",
+      "ok": true,
+      "detail": {
+        "expected": [
+          "warmup",
+          "block1",
+          "block2",
+          "retest",
+          "reflection"
+        ],
+        "got": [
+          "warmup",
+          "block1",
+          "block2",
+          "retest",
+          "reflection"
+        ]
+      }
+    },
+    {
+      "name": "no_duplicate_primary_drills",
+      "ok": true,
+      "detail": {
+        "duplicates": []
+      }
+    },
+    {
+      "name": "pump_drill_primary_once",
+      "ok": true,
+      "detail": {
+        "primary_count": 0
+      }
+    }
+  ],
+  "deterministic_pass": true
+}
