@@ -48,6 +48,7 @@ The materials here are intended to:
 | `grf-expert-deep-dive.pplx.md` | `forefront-golf-grf-expert-deep-dive.pplx.md` | Ground reaction force expert deep dive |
 | `daily-progressive-practice-prescription.pplx.md` | `forefront-golf-daily-progressive-practice-prescription.pplx.md` | Daily progressive practice prescription framework |
 | `rlu-dose-model-research.pplx.md` | `forefront_rlu_research_report.pplx.md` | **DRAFT - FOR BRENDAN REVIEW - NOT PRODUCTION.** RLU dose-model research; evidence input for a future practice-dose / proposal-engine layer and marketing language. Not wired into the app. |
+| `practice-proposal-engine-v0.1.md` | new — this folder | **DRAFT - FOR BRENDAN REVIEW - NOT PRODUCTION - DO NOT WIRE YET.** v0.1 design spec for the Practice Proposal Engine resolver that sits between the Diagnostic Layer and the Practice Session Builder UI. Defines inputs, the canonical `practice_proposal` output, resolver flow, safety/readiness gates, RLU dose integration, block/drill rules, scoring/retest rules, reactive adaptation, coach vs client output, sendability checks, data contracts needed, MVP plan, QA scenarios, and the Brendan review queue. Not wired into the app; no schema changes implied. |
 
 All source materials were present and copied successfully — no missing files.
 
