@@ -38,6 +38,12 @@ The materials here are intended to:
 5. Capture the RLU (Resolved/Representative Learning Unit) dose-model
    research as evidence input for a future practice-dose / proposal-engine
    layer and for marketing language refinement. **Not wired into the app.**
+6. Capture the Human Engine / learner-profile adaptation layer research
+   (learning style, personality, behavioral adaptation) and a draft
+   data contract (`client-learning-profile-rules.draft.json`) that will
+   later seed `client-learning-profile-rules.json` for use by the
+   Practice Proposal Engine and client-copy rendering. **Not wired into
+   the app.**
 
 ## Contents
 
@@ -49,8 +55,20 @@ The materials here are intended to:
 | `daily-progressive-practice-prescription.pplx.md` | `forefront-golf-daily-progressive-practice-prescription.pplx.md` | Daily progressive practice prescription framework |
 | `rlu-dose-model-research.pplx.md` | `forefront_rlu_research_report.pplx.md` | **DRAFT - FOR BRENDAN REVIEW - NOT PRODUCTION.** RLU dose-model research; evidence input for a future practice-dose / proposal-engine layer and marketing language. Not wired into the app. |
 | `practice-proposal-engine-v0.1.md` | new — this folder | **DRAFT - FOR BRENDAN REVIEW - NOT PRODUCTION - DO NOT WIRE YET.** v0.1 design spec for the Practice Proposal Engine resolver that sits between the Diagnostic Layer and the Practice Session Builder UI. Defines inputs, the canonical `practice_proposal` output, resolver flow, safety/readiness gates, RLU dose integration, block/drill rules, scoring/retest rules, reactive adaptation, coach vs client output, sendability checks, data contracts needed, MVP plan, QA scenarios, and the Brendan review queue. Not wired into the app; no schema changes implied. |
+| `learning-personality-adaptation-report.pplx.md` | `forefront_golf_learning_personality_adaptation_report.pplx.md` | **DRAFT - FOR BRENDAN REVIEW - NOT PRODUCTION.** Human Engine / learner-profile adaptation research: VARK refutation, 10 evidence-backed profile dimensions, 10-question intake screen, 8 learner profile modifiers, rules matrix, sample plan adaptations, and a `client-learning-profile-rules.json` data contract. Evidence input for the Practice Proposal Engine and client-copy rendering. Not wired into the app. |
+| `learner-profile-adaptation-matrix.png` | `forefront_learner_profile_matrix_v2.png` | **DRAFT - FOR BRENDAN REVIEW - NOT PRODUCTION.** Companion chart visualizing the learner-profile dimensions and their session-design adaptations. Reference only. |
+| `client-learning-profile-rules.draft.json` | new — this folder | **DRAFT - FOR BRENDAN REVIEW - NOT PRODUCTION - DO NOT WIRE YET.** Draft dataset / data contract for the Human Engine learner-profile adaptation layer. Contains `_meta` (status, owner, source, not_wired flag), `profile_dimensions`, the 8 `learner_profiles` modifiers, `intake_questions`, `adaptation_rules`, `proposal_engine_integration`, `quality_checks`, `blocked_patterns`, `mvp_fields_required`, and `defer_fields`. Intended as a future seed for `client-learning-profile-rules.json`. Not loaded by the app. |
 
 All source materials were present and copied successfully — no missing files.
+
+**Human Engine / learner-profile adaptation layer note:** The
+`learning-personality-adaptation-report.pplx.md`,
+`learner-profile-adaptation-matrix.png`, and
+`client-learning-profile-rules.draft.json` form the Human Engine layer
+intended for future use by the Practice Proposal Engine (after
+safety/readiness gates, before final block/drill candidate filtering)
+and by client-copy rendering. These are research and draft data only —
+not production rules and not wired into the app.
 
 Citations and content from the original `.pplx.md` documents are preserved as
 delivered.

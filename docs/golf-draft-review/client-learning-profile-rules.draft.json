@@ -1,0 +1,1291 @@
+{
+  "_meta": {
+    "status": "draft_review_only_not_production",
+    "review_owner": "Brendan",
+    "source_report": "learning-personality-adaptation-report.pplx.md",
+    "source_chart": "learner-profile-adaptation-matrix.png",
+    "created_purpose": "Draft dataset / data contract for the Forefront Human Engine learner-profile adaptation layer. Intended as a future seed for client-learning-profile-rules.json that the Practice Proposal Engine will consult after safety/readiness gates and before final block/drill candidate filtering and client copy rendering. This file is reference-only and is not loaded, parsed, or executed by the application.",
+    "not_wired": true,
+    "version": "0.1-draft",
+    "created_at": "2026-05-29",
+    "evidence_confidence_legend": {
+      "evidence_supported": "Supported by peer-reviewed SR/MA/RCT evidence cited in source report",
+      "inferred_review_required": "Directionally supported but requires validation in golf coaching populations",
+      "Forefront_proposed": "Original architectural proposal consistent with the evidence base; not directly validated"
+    },
+    "schema_notes": "Profile keys are stable IDs. Numeric modifiers are multipliers (1.0 = default). Thresholds reference intake_questions.question_id. All rules are soft modifiers — they bias proposal generation but do not override safety/readiness gates.",
+    "review_required_globally": true
+  },
+
+  "profile_dimensions": [
+    {
+      "dimension_key": "autonomy_preference",
+      "display_name": "Autonomy preference",
+      "predicts": "Engagement, intrinsic motivation, long-term adherence; whether to offer choice menus vs. prescribed plans",
+      "intake_signal": ["Q5"],
+      "in_session_signals": ["client self-initiates drill variations without being asked", "client modifies prescribed plan without negative outcomes"],
+      "scale": "low | moderate | high",
+      "evidence_tag": "evidence_supported"
+    },
+    {
+      "dimension_key": "feedback_tolerance",
+      "display_name": "Feedback frequency tolerance / preference",
+      "predicts": "Optimal KR/KP frequency; risk of feedback dependency; predict-then-check vs live-screen protocol",
+      "intake_signal": ["Q4"],
+      "in_session_signals": ["client seeks coach reassurance after most reps", "client checks data screen after every shot"],
+      "scale": "low | moderate | high",
+      "evidence_tag": "evidence_supported"
+    },
+    {
+      "dimension_key": "explanation_depth_preference",
+      "display_name": "Explanation depth / analytical orientation",
+      "predicts": "Cue verbosity; pre-drill rationale depth; coach-script depth; how much technical detail to expose",
+      "intake_signal": ["Q1", "Q2"],
+      "in_session_signals": ["client asks 'but why does that work?' repeatedly", "client reads about mechanics independently"],
+      "scale": "low | moderate | high",
+      "evidence_tag": "inferred_review_required"
+    },
+    {
+      "dimension_key": "anxiety_reinvestment_risk",
+      "display_name": "Anxiety / reinvestment risk",
+      "predicts": "Choking susceptibility; safety of pressure tasks; need for implicit-learning bias; QE pre-shot need",
+      "intake_signal": ["Q3", "Q6"],
+      "in_session_signals": ["quality degrades sharply in pressure/simulated conditions vs blocked range", "frequent verbal self-criticism after errors", "reverts to mechanical thoughts under pressure"],
+      "scale": "low | moderate | high",
+      "evidence_tag": "evidence_supported"
+    },
+    {
+      "dimension_key": "confidence_self_efficacy",
+      "display_name": "Confidence / self-efficacy",
+      "predicts": "Goal difficulty calibration; feedback framing; failure response; readiness for difficult drills",
+      "intake_signal": ["Q7"],
+      "in_session_signals": ["client minimizes own performance", "deflects compliments", "sets goals below capability"],
+      "scale": "low | moderate | high",
+      "evidence_tag": "evidence_supported"
+    },
+    {
+      "dimension_key": "attention_executive_function",
+      "display_name": "Attention capacity / executive function",
+      "predicts": "Session length; drill complexity; cues per block; instruction format (demo vs verbal)",
+      "intake_signal": ["Q8"],
+      "in_session_signals": ["misses cues when given more than 2 simultaneously", "attention wanders during long pre-drill briefings"],
+      "scale": "low | moderate | high",
+      "evidence_tag": "evidence_supported"
+    },
+    {
+      "dimension_key": "data_technology_preference",
+      "display_name": "Data / technology preference",
+      "predicts": "TrackMan engagement level; KPI dashboard exposure; predict-then-check vs screen-off blocks",
+      "intake_signal": ["Q1", "Q4"],
+      "in_session_signals": ["engages deeply with launch monitor metrics", "brings own data to sessions", "asks about numbers proactively"],
+      "scale": "low | moderate | high",
+      "evidence_tag": "inferred_review_required"
+    },
+    {
+      "dimension_key": "competition_pressure_preference",
+      "display_name": "Competition / pressure / novelty preference",
+      "predicts": "Pace of random-practice progression; gamification appetite; appropriateness of competitive practice formats",
+      "intake_signal": ["Q3", "Q5"],
+      "in_session_signals": ["energized by score vs peers", "self-initiates competitive variations", "deflated by competitive framing"],
+      "scale": "low | moderate | high",
+      "evidence_tag": "inferred_review_required"
+    },
+    {
+      "dimension_key": "injury_fear_guarding",
+      "display_name": "Injury fear / guarded movement",
+      "predicts": "Progressive loading design; language safety; pressure exposure gating; symptom-monitored progression",
+      "intake_signal": ["Q9"],
+      "in_session_signals": ["avoids specific movement patterns or clubs without explanation", "mentions injury history unprompted", "checks in about pain after any change"],
+      "scale": "none | possible | confirmed",
+      "evidence_tag": "evidence_supported"
+    },
+    {
+      "dimension_key": "adherence_conscientiousness",
+      "display_name": "Adherence / conscientiousness",
+      "predicts": "Homework compliance; check-in cadence; structure requirements; in-session vs at-home dose split",
+      "intake_signal": ["Q10"],
+      "in_session_signals": ["ignores homework but completes in-session drills", "modifies/skips planned items", "follows plan exactly"],
+      "scale": "low | moderate | high",
+      "evidence_tag": "evidence_supported"
+    }
+  ],
+
+  "learner_profiles": [
+    {
+      "profile_key": "detail_seeker",
+      "display_name": "Detail-Seeker (Analytical / Explicit Learner)",
+      "status": "draft_review_only_not_production",
+      "review_required": true,
+      "signal_inputs": {
+        "intake_questions": [
+          { "question_id": "Q1", "operator": "gte", "threshold": 4 },
+          { "question_id": "Q2", "operator": "gte", "threshold": 4 },
+          { "question_id": "Q8", "operator": "gte", "threshold": 4 }
+        ],
+        "confidence_level": "declared",
+        "minimum_observations": 1
+      },
+      "behavioral_markers": [
+        "Asks mechanical questions repeatedly",
+        "Gravitates to launch monitor data",
+        "Reads about swing mechanics independently",
+        "May over-analyze errors"
+      ],
+      "coach_observation_markers": [
+        "Pre-drill questions about why a drill works",
+        "Engagement spikes when shown biomechanical rationale",
+        "Internal-focus language drifts in during free practice"
+      ],
+      "modifies_blocks": {
+        "blocked_to_random_speed": "normal",
+        "pressure_task_gate": "standard_with_explicit_park",
+        "session_length_modifier": 1.0,
+        "rlu_volume_modifier": 1.0
+      },
+      "modifies_dose": {
+        "acquisition_reps_modifier": 1.0,
+        "consolidation_reps_modifier": 1.0,
+        "fatigue_gate_threshold": 7
+      },
+      "cueing_rule": {
+        "default_focus": "external_far",
+        "internal_focus_allowed": true,
+        "internal_focus_context": "non_performance_acquisition_only",
+        "cues_per_block_max": 2,
+        "cue_length_max_words": 12,
+        "analogy_library_tag": "mechanical_rationale_paired"
+      },
+      "feedback_rule": {
+        "frequency": "faded",
+        "kr_style": "rich_kp",
+        "feedback_request_model": false,
+        "tech_feedback_protocol": "predict_then_check",
+        "error_response_style": "process_reframe"
+      },
+      "technology_rule": {
+        "trackman_engagement_level": "full",
+        "video_feedback_timing": "end_of_block",
+        "kpi_dashboard_access": true,
+        "predict_before_check": true
+      },
+      "pressure_rule": {
+        "min_stage_before_pressure": 3,
+        "desensitization_protocol": "standard",
+        "pre_shot_routine_required": true,
+        "quiet_eye_protocol": false,
+        "competition_simulation_allowed": true,
+        "coach_sign_off_required": false,
+        "explicit_knowledge_park_required": true
+      },
+      "homework_rule": {
+        "format": "checklist_with_rationale",
+        "complexity_level": 2,
+        "expected_compliance_rate": 0.85,
+        "delivery_format": "written"
+      },
+      "explanation_rule": {
+        "pre_drill_depth": "full_rationale",
+        "in_drill_depth": "minimal",
+        "post_drill_depth": "data_linked"
+      },
+      "autonomy_rule": {
+        "choice_points_per_session": 1,
+        "menu_format_allowed": false,
+        "client_can_request_variations": true
+      },
+      "coach_script": {
+        "opening_frame": "Here's what this drill is doing and why it works. Two cues, one outcome.",
+        "error_response": "Good info. The mechanism is X — let's reset and try one rep with just the outcome cue.",
+        "progress_celebration": "Numbers confirm the change. Lock it in with one more rep.",
+        "pressure_task_brief": "Park the technical knowledge — for these reps, one cue only.",
+        "contraindication_warning": "Do not deliver mechanical instruction immediately before performance reps."
+      },
+      "client_copy": {
+        "session_intro_template": "Today's plan: understand the why, then build the move. Data review at the end.",
+        "cue_card_style": "short_phrase",
+        "tone": "data_forward",
+        "max_copy_length_words": 180
+      },
+      "do_not_do": [
+        "Withhold explanation (will reduce buy-in)",
+        "Use only feel-based cues (will disengage)",
+        "Stack more than 2-3 rules simultaneously"
+      ],
+      "risks_if_ignored": [
+        "Reinvestment under pressure",
+        "Internal focus drift during performance",
+        "Analysis paralysis"
+      ],
+      "contraindications": [
+        { "what_to_avoid": "Mechanical cues during or immediately before performance reps", "why": "Activates explicit knowledge → reinvestment risk", "risk_level": "medium" }
+      ],
+      "evidence_tags": ["inferred_review_required"]
+    },
+
+    {
+      "profile_key": "feel_first_learner",
+      "display_name": "Feel-First Learner (Implicit / Experiential)",
+      "status": "draft_review_only_not_production",
+      "review_required": true,
+      "signal_inputs": {
+        "intake_questions": [
+          { "question_id": "Q1", "operator": "lte", "threshold": 2 },
+          { "question_id": "Q2", "operator": "lte", "threshold": 2 },
+          { "question_id": "Q4", "operator": "lte", "threshold": 2 }
+        ],
+        "confidence_level": "declared",
+        "minimum_observations": 1
+      },
+      "behavioral_markers": [
+        "Learns by watching and doing",
+        "Dislikes lengthy pre-drill explanation",
+        "Frequently says 'it just felt right'",
+        "Resists technical feedback"
+      ],
+      "coach_observation_markers": [
+        "Attention drops during verbal explanation",
+        "Replicates demo after one watch",
+        "Answers 'how did that feel?' with rich proprioceptive language"
+      ],
+      "modifies_blocks": {
+        "blocked_to_random_speed": "normal",
+        "pressure_task_gate": "standard",
+        "session_length_modifier": 1.0,
+        "rlu_volume_modifier": 1.0
+      },
+      "modifies_dose": {
+        "acquisition_reps_modifier": 1.0,
+        "consolidation_reps_modifier": 1.0,
+        "fatigue_gate_threshold": 7
+      },
+      "cueing_rule": {
+        "default_focus": "analogy",
+        "internal_focus_allowed": false,
+        "cues_per_block_max": 1,
+        "cue_length_max_words": 6,
+        "analogy_library_tag": "single_metaphor_external_far"
+      },
+      "feedback_rule": {
+        "frequency": "self_controlled",
+        "kr_style": "outcome_only",
+        "feedback_request_model": true,
+        "tech_feedback_protocol": "screen_off",
+        "error_response_style": "neutral_acknowledge"
+      },
+      "technology_rule": {
+        "trackman_engagement_level": "minimal",
+        "video_feedback_timing": "end_of_session",
+        "kpi_dashboard_access": false,
+        "predict_before_check": false
+      },
+      "pressure_rule": {
+        "min_stage_before_pressure": 3,
+        "desensitization_protocol": "errorless_expansion",
+        "pre_shot_routine_required": true,
+        "quiet_eye_protocol": true,
+        "competition_simulation_allowed": true,
+        "coach_sign_off_required": false
+      },
+      "homework_rule": {
+        "format": "feel_journal",
+        "complexity_level": 1,
+        "expected_compliance_rate": 0.7,
+        "delivery_format": "voice_note"
+      },
+      "explanation_rule": {
+        "pre_drill_depth": "demo_plus_one_sentence",
+        "in_drill_depth": "none",
+        "post_drill_depth": "ask_first_then_minimal"
+      },
+      "autonomy_rule": {
+        "choice_points_per_session": 1,
+        "menu_format_allowed": false,
+        "client_can_request_variations": true
+      },
+      "coach_script": {
+        "opening_frame": "Watch this. Then go find it.",
+        "error_response": "What did you feel on that one?",
+        "progress_celebration": "That shape — remember that feel.",
+        "pressure_task_brief": "Same shape, same target, no new thoughts.",
+        "contraindication_warning": "Do not front-load technical rules or run continuous verbal feedback during reps."
+      },
+      "client_copy": {
+        "session_intro_template": "Your job is to feel the shape of that shot. The score is the feedback.",
+        "cue_card_style": "metaphor",
+        "tone": "feel_first",
+        "max_copy_length_words": 90
+      },
+      "do_not_do": [
+        "Front-load technical rules",
+        "Give continuous verbal feedback during reps",
+        "Overload with data screens"
+      ],
+      "risks_if_ignored": [
+        "Disengagement",
+        "Resistance to corrective feedback",
+        "Unnoticed development of incorrect movement patterns"
+      ],
+      "contraindications": [
+        { "what_to_avoid": "Long pre-drill biomechanical rationale", "why": "Disengages this client and triggers internal focus drift", "risk_level": "medium" }
+      ],
+      "evidence_tags": ["evidence_supported", "inferred_review_required"]
+    },
+
+    {
+      "profile_key": "anxious_controller",
+      "display_name": "Anxious Controller (High Reinvestment / Choking Risk)",
+      "status": "draft_review_only_not_production",
+      "review_required": true,
+      "signal_inputs": {
+        "intake_questions": [
+          { "question_id": "Q3", "operator": "gte", "threshold": 4 },
+          { "question_id": "Q6", "operator": "gte", "threshold": 4 }
+        ],
+        "in_session_markers": [
+          "performance drops >=15% in simulated pressure vs blocked range",
+          "client verbalizes overthinking or mechanical focus during shots",
+          "grip/setup disruption visible in pre-shot under observation",
+          "requests mechanical reassurance immediately before performance reps"
+        ],
+        "confidence_level": "observed",
+        "minimum_observations": 2
+      },
+      "behavioral_markers": [
+        "Self-critical after errors for extended period",
+        "Avoids competitive drill formats",
+        "Verbalizes 'I'm in my head' or equivalent",
+        "Performance worsens when watched"
+      ],
+      "coach_observation_markers": [
+        "Setup deteriorates as stakes rise",
+        "Pre-shot routine inconsistent under observation",
+        "Asks for mechanical confirmation before pressure reps"
+      ],
+      "modifies_blocks": {
+        "blocked_to_random_speed": "slow",
+        "pressure_task_gate": "coach_review_required",
+        "session_length_modifier": 1.0,
+        "rlu_volume_modifier": 0.85
+      },
+      "modifies_dose": {
+        "acquisition_reps_modifier": 0.9,
+        "consolidation_reps_modifier": 1.1,
+        "fatigue_gate_threshold": 6
+      },
+      "cueing_rule": {
+        "default_focus": "analogy",
+        "internal_focus_allowed": false,
+        "cues_per_block_max": 1,
+        "cue_length_max_words": 5,
+        "analogy_library_tag": "pendulum_swing_feel"
+      },
+      "feedback_rule": {
+        "frequency": "bandwidth",
+        "kr_style": "outcome_only",
+        "feedback_request_model": false,
+        "tech_feedback_protocol": "screen_off",
+        "error_response_style": "bandwidth_ignore"
+      },
+      "technology_rule": {
+        "trackman_engagement_level": "minimal",
+        "video_feedback_timing": "end_of_session",
+        "kpi_dashboard_access": false,
+        "predict_before_check": true
+      },
+      "pressure_rule": {
+        "min_stage_before_pressure": 3,
+        "desensitization_protocol": "ASAP",
+        "pre_shot_routine_required": true,
+        "quiet_eye_protocol": true,
+        "competition_simulation_allowed": false,
+        "coach_sign_off_required": true,
+        "min_stable_blocks_before_pressure": 4
+      },
+      "homework_rule": {
+        "format": "feel_journal",
+        "complexity_level": 1,
+        "expected_compliance_rate": 0.7,
+        "delivery_format": "text"
+      },
+      "explanation_rule": {
+        "pre_drill_depth": "minimal",
+        "in_drill_depth": "none",
+        "post_drill_depth": "process_reframe_only"
+      },
+      "autonomy_rule": {
+        "choice_points_per_session": 1,
+        "menu_format_allowed": false,
+        "client_can_request_variations": true
+      },
+      "coach_script": {
+        "opening_frame": "Today we're building feel reps — no scores, no pressure. The goal is just to execute the shape we've been working on.",
+        "error_response": "Good — you found the boundary. Reset, one cue, next rep.",
+        "progress_celebration": "Notice how that one felt? That's what we're building toward.",
+        "pressure_task_brief": "We're going to add a tiny bit of stakes today. Remember — your swing doesn't care. Only your attention decides if it changes.",
+        "contraindication_warning": "Avoid: any mechanical cue during or immediately before a rep. Avoid: ego-comparative framing."
+      },
+      "client_copy": {
+        "session_intro_template": "Today's practice is about letting your swing do what it already knows how to do. One feel. One target. One shot at a time.",
+        "cue_card_style": "metaphor",
+        "tone": "feel_first",
+        "max_copy_length_words": 80
+      },
+      "do_not_do": [
+        "Give detailed mechanical feedback right before performance reps",
+        "Introduce pressure tasks prematurely",
+        "Use ego-comparative framing",
+        "Allow self-monitoring loops (e.g., staring at swing video immediately after poor shots)"
+      ],
+      "risks_if_ignored": [
+        "Choking under competition pressure",
+        "Program abandonment",
+        "Reinforcement of reinvestment pattern"
+      ],
+      "contraindications": [
+        { "what_to_avoid": "Introducing pressure tasks before 4+ stable blocked-practice blocks", "why": "Premature pressure exposure can reinforce choke pattern and reduce practice quality", "risk_level": "high" },
+        { "what_to_avoid": "Live TrackMan number monitoring during skill acquisition", "why": "Creates an additional self-evaluation loop that increases reinvestment risk", "risk_level": "medium" },
+        { "what_to_avoid": "Detailed mechanical instructions during or immediately before performance reps", "why": "Activates explicit knowledge → reinvestment → disrupted automaticity", "risk_level": "high" }
+      ],
+      "evidence_tags": ["evidence_supported"]
+    },
+
+    {
+      "profile_key": "autonomous_explorer",
+      "display_name": "Autonomous Experimenter",
+      "status": "draft_review_only_not_production",
+      "review_required": true,
+      "signal_inputs": {
+        "intake_questions": [
+          { "question_id": "Q5", "operator": "gte", "threshold": 4 },
+          { "question_id": "Q1", "operator": "lte", "threshold": 3 },
+          { "question_id": "Q2", "operator": "lte", "threshold": 3 }
+        ],
+        "in_session_markers": [
+          "self-modifies drills",
+          "generates own variations",
+          "resists rigid plans"
+        ],
+        "confidence_level": "declared",
+        "minimum_observations": 1
+      },
+      "behavioral_markers": [
+        "Intrinsically motivated",
+        "Self-directed",
+        "Often generates creative practice variations",
+        "May resist rigid plans"
+      ],
+      "coach_observation_markers": [
+        "Picks own order from a menu without prompt",
+        "Reports drill variants tried between sessions",
+        "Asks 'can I try it this way?' frequently"
+      ],
+      "modifies_blocks": {
+        "blocked_to_random_speed": "fast",
+        "pressure_task_gate": "standard",
+        "session_length_modifier": 1.0,
+        "rlu_volume_modifier": 1.1
+      },
+      "modifies_dose": {
+        "acquisition_reps_modifier": 1.0,
+        "consolidation_reps_modifier": 1.0,
+        "fatigue_gate_threshold": 7
+      },
+      "cueing_rule": {
+        "default_focus": "external_far",
+        "internal_focus_allowed": false,
+        "cues_per_block_max": 1,
+        "cue_length_max_words": 8,
+        "analogy_library_tag": "client_choice"
+      },
+      "feedback_rule": {
+        "frequency": "self_controlled",
+        "kr_style": "outcome_only",
+        "feedback_request_model": true,
+        "tech_feedback_protocol": "predict_then_check",
+        "error_response_style": "neutral_acknowledge"
+      },
+      "technology_rule": {
+        "trackman_engagement_level": "moderate",
+        "video_feedback_timing": "client_request",
+        "kpi_dashboard_access": true,
+        "predict_before_check": true
+      },
+      "pressure_rule": {
+        "min_stage_before_pressure": 2,
+        "desensitization_protocol": "standard",
+        "pre_shot_routine_required": false,
+        "quiet_eye_protocol": false,
+        "competition_simulation_allowed": true,
+        "coach_sign_off_required": false
+      },
+      "homework_rule": {
+        "format": "open_challenge",
+        "complexity_level": 2,
+        "expected_compliance_rate": 0.6,
+        "delivery_format": "app"
+      },
+      "explanation_rule": {
+        "pre_drill_depth": "brief_constraints_only",
+        "in_drill_depth": "none",
+        "post_drill_depth": "on_request"
+      },
+      "autonomy_rule": {
+        "choice_points_per_session": 3,
+        "menu_format_allowed": true,
+        "client_can_request_variations": true
+      },
+      "coach_script": {
+        "opening_frame": "You choose the sequence. Here are the constraints. Here's what success looks like.",
+        "error_response": "What did that show you?",
+        "progress_celebration": "Nice find — bring that into next week.",
+        "pressure_task_brief": "Pick your own stakes. The constraint is the score.",
+        "contraindication_warning": "Avoid prescribing every detail or requiring strict compliance reporting."
+      },
+      "client_copy": {
+        "session_intro_template": "Three stations. You pick the order. The constraint tells you when you're done.",
+        "cue_card_style": "short_phrase",
+        "tone": "choice",
+        "max_copy_length_words": 120
+      },
+      "do_not_do": [
+        "Prescribe every detail of every session",
+        "Require report-back on exact plan compliance",
+        "Remove all choice to 'ensure' proper execution"
+      ],
+      "risks_if_ignored": [
+        "Disengagement",
+        "Extrinsic motivation displacing intrinsic motivation",
+        "Plan drift without follow-up"
+      ],
+      "contraindications": [
+        { "what_to_avoid": "Compliance-only progress tracking", "why": "Misses the actual outcome signal for this profile", "risk_level": "low" }
+      ],
+      "evidence_tags": ["evidence_supported"]
+    },
+
+    {
+      "profile_key": "low_confidence_novice",
+      "display_name": "Low-Confidence Novice",
+      "status": "draft_review_only_not_production",
+      "review_required": true,
+      "signal_inputs": {
+        "intake_questions": [
+          { "question_id": "Q7", "operator": "lte", "threshold": 2 }
+        ],
+        "in_session_markers": [
+          "minimizes own performance",
+          "deflects compliments",
+          "avoids attempting difficult shots",
+          "sets lower goals than capability warrants"
+        ],
+        "confidence_level": "declared",
+        "minimum_observations": 1
+      },
+      "behavioral_markers": [
+        "Minimizes own performance",
+        "Deflects compliments",
+        "Avoids attempting difficult shots",
+        "Sets lower goals than capability warrants"
+      ],
+      "coach_observation_markers": [
+        "Apologizes after errors",
+        "Asks 'is that right?' frequently",
+        "Visible relief after small successes"
+      ],
+      "modifies_blocks": {
+        "blocked_to_random_speed": "slow",
+        "pressure_task_gate": "locked_until_milestone",
+        "session_length_modifier": 0.9,
+        "rlu_volume_modifier": 0.9
+      },
+      "modifies_dose": {
+        "acquisition_reps_modifier": 0.85,
+        "consolidation_reps_modifier": 1.0,
+        "fatigue_gate_threshold": 6
+      },
+      "cueing_rule": {
+        "default_focus": "external_far",
+        "internal_focus_allowed": false,
+        "cues_per_block_max": 1,
+        "cue_length_max_words": 6,
+        "analogy_library_tag": "mastery_success_framed"
+      },
+      "feedback_rule": {
+        "frequency": "high_early_then_faded",
+        "kr_style": "process_plus_outcome",
+        "feedback_request_model": false,
+        "tech_feedback_protocol": "screen_off",
+        "error_response_style": "process_reframe"
+      },
+      "technology_rule": {
+        "trackman_engagement_level": "minimal",
+        "video_feedback_timing": "end_of_session",
+        "kpi_dashboard_access": false,
+        "predict_before_check": false
+      },
+      "pressure_rule": {
+        "min_stage_before_pressure": 4,
+        "desensitization_protocol": "errorless_expansion",
+        "pre_shot_routine_required": false,
+        "quiet_eye_protocol": false,
+        "competition_simulation_allowed": false,
+        "coach_sign_off_required": true,
+        "min_successful_blocks_before_pressure": 4
+      },
+      "homework_rule": {
+        "format": "1_step_only",
+        "complexity_level": 1,
+        "expected_compliance_rate": 0.75,
+        "delivery_format": "text"
+      },
+      "explanation_rule": {
+        "pre_drill_depth": "brief_success_framed",
+        "in_drill_depth": "process_praise",
+        "post_drill_depth": "mastery_emphasis"
+      },
+      "autonomy_rule": {
+        "choice_points_per_session": 1,
+        "menu_format_allowed": false,
+        "client_can_request_variations": false
+      },
+      "coach_script": {
+        "opening_frame": "Today is about reps you can complete. We're building capacity — the score doesn't count yet.",
+        "error_response": "Setup was excellent. Reset, same target, next rep.",
+        "progress_celebration": "That's a rep you couldn't complete last week. Lock it in.",
+        "pressure_task_brief": "Not today — we're stacking successes first.",
+        "contraindication_warning": "Avoid comparative feedback. Avoid starting at full-difficulty drill versions."
+      },
+      "client_copy": {
+        "session_intro_template": "Every rep you complete is training your brain. You don't need to be good yet — you need to be consistent.",
+        "cue_card_style": "short_phrase",
+        "tone": "achievement",
+        "max_copy_length_words": 90
+      },
+      "do_not_do": [
+        "Introduce comparative feedback ('most clients at this stage can...')",
+        "Start at full-difficulty versions of drills",
+        "Give critical feedback without process praise first",
+        "Use ego-involving language"
+      ],
+      "risks_if_ignored": [
+        "Dropout",
+        "Confirmation of 'can't improve' belief",
+        "Disproportionate motivation harm from accurate but unframed feedback"
+      ],
+      "contraindications": [
+        { "what_to_avoid": "Comparative ('vs other clients') language", "why": "Identity threat undercuts self-efficacy building", "risk_level": "high" }
+      ],
+      "evidence_tags": ["evidence_supported"]
+    },
+
+    {
+      "profile_key": "data_driven_optimizer",
+      "display_name": "Data-Driven Optimizer",
+      "status": "draft_review_only_not_production",
+      "review_required": true,
+      "signal_inputs": {
+        "intake_questions": [
+          { "question_id": "Q1", "operator": "gte", "threshold": 4 },
+          { "question_id": "Q4", "operator": "gte", "threshold": 4 },
+          { "question_id": "Q8", "operator": "gte", "threshold": 4 }
+        ],
+        "in_session_markers": [
+          "engages deeply with TrackMan metrics",
+          "asks about numbers proactively",
+          "tracks personal bests"
+        ],
+        "confidence_level": "declared",
+        "minimum_observations": 1
+      },
+      "behavioral_markers": [
+        "Brings launch monitor data to sessions",
+        "Tracks personal bests",
+        "Enjoys KPI dashboards",
+        "Responds well to metrics-based progress evidence"
+      ],
+      "coach_observation_markers": [
+        "Checks screen after every shot",
+        "References numerical baselines unprompted",
+        "Disengages when metrics are hidden"
+      ],
+      "modifies_blocks": {
+        "blocked_to_random_speed": "normal",
+        "pressure_task_gate": "standard",
+        "session_length_modifier": 1.0,
+        "rlu_volume_modifier": 1.0
+      },
+      "modifies_dose": {
+        "acquisition_reps_modifier": 1.0,
+        "consolidation_reps_modifier": 1.0,
+        "fatigue_gate_threshold": 7
+      },
+      "cueing_rule": {
+        "default_focus": "external_far",
+        "internal_focus_allowed": true,
+        "internal_focus_context": "data_linked_acquisition_only",
+        "cues_per_block_max": 2,
+        "cue_length_max_words": 12,
+        "analogy_library_tag": "metric_linked"
+      },
+      "feedback_rule": {
+        "frequency": "faded",
+        "kr_style": "rich_kp",
+        "feedback_request_model": false,
+        "tech_feedback_protocol": "predict_then_check",
+        "error_response_style": "process_reframe",
+        "screen_off_blocks_required_per_session": 1
+      },
+      "technology_rule": {
+        "trackman_engagement_level": "full",
+        "video_feedback_timing": "end_of_block",
+        "kpi_dashboard_access": true,
+        "predict_before_check": true,
+        "max_live_screen_dependency": "predict_then_check_protocol_enforced"
+      },
+      "pressure_rule": {
+        "min_stage_before_pressure": 3,
+        "desensitization_protocol": "standard",
+        "pre_shot_routine_required": true,
+        "quiet_eye_protocol": false,
+        "competition_simulation_allowed": true,
+        "coach_sign_off_required": false
+      },
+      "homework_rule": {
+        "format": "metric_target",
+        "complexity_level": 2,
+        "expected_compliance_rate": 0.85,
+        "delivery_format": "app"
+      },
+      "explanation_rule": {
+        "pre_drill_depth": "data_baseline_plus_what_moves_needle",
+        "in_drill_depth": "minimal",
+        "post_drill_depth": "data_linked"
+      },
+      "autonomy_rule": {
+        "choice_points_per_session": 1,
+        "menu_format_allowed": false,
+        "client_can_request_variations": true
+      },
+      "coach_script": {
+        "opening_frame": "Your target this week: [metric]. Here's the baseline and what moves the needle.",
+        "error_response": "Predict the number first — then we check.",
+        "progress_celebration": "Trend confirms it. One more block to lock it in.",
+        "pressure_task_brief": "Same metric, slightly tighter target. Predict first.",
+        "contraindication_warning": "Avoid removing all data (will disengage). Avoid live-screen monitoring during acquisition blocks."
+      },
+      "client_copy": {
+        "session_intro_template": "Today's target: [metric]. Predict-then-check protocol on every block.",
+        "cue_card_style": "short_phrase",
+        "tone": "data_forward",
+        "max_copy_length_words": 160
+      },
+      "do_not_do": [
+        "Remove all data (will disengage completely)",
+        "Allow continuous live-screen monitoring during acquisition blocks",
+        "Conflate range metrics with course performance"
+      ],
+      "risks_if_ignored": [
+        "Feedback dependency",
+        "Range-to-course transfer gap",
+        "Feel development blunted by tech overuse"
+      ],
+      "contraindications": [
+        { "what_to_avoid": "100% live-screen feedback dependency", "why": "Creates KR dependency and impairs retention", "risk_level": "medium" }
+      ],
+      "evidence_tags": ["inferred_review_required", "evidence_supported"]
+    },
+
+    {
+      "profile_key": "distracted_low_attention",
+      "display_name": "Distracted / Low Attention Capacity",
+      "status": "draft_review_only_not_production",
+      "review_required": true,
+      "signal_inputs": {
+        "intake_questions": [
+          { "question_id": "Q8", "operator": "lte", "threshold": 2 }
+        ],
+        "in_session_markers": [
+          "misses cues when given more than 2 simultaneously",
+          "needs frequent repetition of instructions",
+          "attention wanders during long pre-drill briefings"
+        ],
+        "confidence_level": "declared",
+        "minimum_observations": 1
+      },
+      "behavioral_markers": [
+        "Needs simple, short instructions",
+        "Responds better to demonstration than verbal explanation",
+        "Attention wanders during lengthy briefings",
+        "May have ADHD or high life-context stress"
+      ],
+      "coach_observation_markers": [
+        "Reverts to old pattern mid-block after a cue",
+        "Restates instructions inaccurately",
+        "Quality improves with environmental constraints (alignment sticks, spot targets)"
+      ],
+      "modifies_blocks": {
+        "blocked_to_random_speed": "normal",
+        "pressure_task_gate": "simplified_only",
+        "session_length_modifier": 0.75,
+        "rlu_volume_modifier": 0.75
+      },
+      "modifies_dose": {
+        "acquisition_reps_modifier": 0.9,
+        "consolidation_reps_modifier": 1.0,
+        "fatigue_gate_threshold": 6,
+        "micro_block_structure_required": true
+      },
+      "cueing_rule": {
+        "default_focus": "external_far",
+        "internal_focus_allowed": false,
+        "cues_per_block_max": 1,
+        "cue_length_max_words": 3,
+        "analogy_library_tag": "ultra_short"
+      },
+      "feedback_rule": {
+        "frequency": "higher_shorter_loops",
+        "kr_style": "outcome_only",
+        "feedback_request_model": false,
+        "tech_feedback_protocol": "single_metric_only",
+        "error_response_style": "neutral_acknowledge"
+      },
+      "technology_rule": {
+        "trackman_engagement_level": "minimal",
+        "video_feedback_timing": "end_of_session",
+        "kpi_dashboard_access": false,
+        "predict_before_check": false,
+        "max_metrics_displayed": 1
+      },
+      "pressure_rule": {
+        "min_stage_before_pressure": 3,
+        "desensitization_protocol": "standard",
+        "pre_shot_routine_required": true,
+        "quiet_eye_protocol": false,
+        "competition_simulation_allowed": true,
+        "coach_sign_off_required": false,
+        "simplified_format_required": true
+      },
+      "homework_rule": {
+        "format": "1_step_only",
+        "complexity_level": 1,
+        "expected_compliance_rate": 0.6,
+        "delivery_format": "text"
+      },
+      "explanation_rule": {
+        "pre_drill_depth": "demo_plus_one_sentence",
+        "in_drill_depth": "none",
+        "post_drill_depth": "minimal"
+      },
+      "autonomy_rule": {
+        "choice_points_per_session": 1,
+        "menu_format_allowed": false,
+        "client_can_request_variations": false
+      },
+      "coach_script": {
+        "opening_frame": "Today: 1 thing. Here it is.",
+        "error_response": "Reset. Same cue. Go.",
+        "progress_celebration": "Lock that one in.",
+        "pressure_task_brief": "Same cue. Tighter target.",
+        "contraindication_warning": "Avoid 3+ step verbal drill instructions. Avoid front-loaded technical explanation."
+      },
+      "client_copy": {
+        "session_intro_template": "Today: 1 thing. Here it is:",
+        "cue_card_style": "one_word",
+        "tone": "achievement",
+        "max_copy_length_words": 40
+      },
+      "do_not_do": [
+        "Give 3+ step drill instructions verbally",
+        "Front-load long technical explanation",
+        "Expect complex homework compliance",
+        "Use text-heavy client materials"
+      ],
+      "risks_if_ignored": [
+        "Knowledge overload → no learning",
+        "Session frustration",
+        "Knowledge decay between sessions"
+      ],
+      "contraindications": [
+        { "what_to_avoid": "Multi-cue blocks", "why": "Exceeds attention capacity and shuts down motor learning", "risk_level": "medium" }
+      ],
+      "evidence_tags": ["evidence_supported"]
+    },
+
+    {
+      "profile_key": "injury_guarded_client",
+      "display_name": "Injury-Guarded Client",
+      "status": "draft_review_only_not_production",
+      "review_required": true,
+      "signal_inputs": {
+        "intake_questions": [
+          { "question_id": "Q9", "operator": "eq", "threshold": "yes" }
+        ],
+        "in_session_markers": [
+          "avoidance of specific movement patterns",
+          "mentions injury history unprompted",
+          "checks in about pain after any movement change"
+        ],
+        "confidence_level": "declared",
+        "minimum_observations": 1
+      },
+      "behavioral_markers": [
+        "Hesitates or modifies movements in feared zones",
+        "Mentions injury history unprompted",
+        "Checks in about pain after any movement change"
+      ],
+      "coach_observation_markers": [
+        "Reduces swing effort selectively",
+        "Visible bracing before specific patterns",
+        "Volunteers symptom updates mid-session"
+      ],
+      "modifies_blocks": {
+        "blocked_to_random_speed": "slow",
+        "pressure_task_gate": "locked_until_movement_confidence_milestone",
+        "session_length_modifier": 0.9,
+        "rlu_volume_modifier": 0.85
+      },
+      "modifies_dose": {
+        "acquisition_reps_modifier": 0.8,
+        "consolidation_reps_modifier": 1.0,
+        "fatigue_gate_threshold": 6,
+        "symptom_gated": true,
+        "pain_monitor_acceptable_range_0_to_10": [0, 5]
+      },
+      "cueing_rule": {
+        "default_focus": "external_far",
+        "internal_focus_allowed": false,
+        "cues_per_block_max": 1,
+        "cue_length_max_words": 6,
+        "analogy_library_tag": "non_threat_outcome"
+      },
+      "feedback_rule": {
+        "frequency": "faded",
+        "kr_style": "outcome_only",
+        "feedback_request_model": true,
+        "tech_feedback_protocol": "screen_off",
+        "error_response_style": "neutral_acknowledge"
+      },
+      "technology_rule": {
+        "trackman_engagement_level": "minimal",
+        "video_feedback_timing": "end_of_session",
+        "kpi_dashboard_access": false,
+        "predict_before_check": false
+      },
+      "pressure_rule": {
+        "min_stage_before_pressure": 4,
+        "desensitization_protocol": "errorless_expansion",
+        "pre_shot_routine_required": true,
+        "quiet_eye_protocol": false,
+        "competition_simulation_allowed": false,
+        "coach_sign_off_required": true,
+        "movement_confidence_milestone_required": true
+      },
+      "homework_rule": {
+        "format": "graduated_movement_journal",
+        "complexity_level": 1,
+        "expected_compliance_rate": 0.75,
+        "delivery_format": "text"
+      },
+      "explanation_rule": {
+        "pre_drill_depth": "full_safety_framing",
+        "in_drill_depth": "minimal",
+        "post_drill_depth": "symptom_check"
+      },
+      "autonomy_rule": {
+        "choice_points_per_session": 1,
+        "menu_format_allowed": false,
+        "client_can_request_variations": true
+      },
+      "coach_script": {
+        "opening_frame": "Your body is on your side. We're building from where you're comfortable — no surprises.",
+        "error_response": "Notice that — back off if needed. Reset.",
+        "progress_celebration": "That's a range you didn't have last week. Confirm it feels OK.",
+        "pressure_task_brief": "Not yet — we're building confidence first.",
+        "contraindication_warning": "Avoid pressuring the client to 'push through.' Avoid dismissing injury concern as psychological only."
+      },
+      "client_copy": {
+        "session_intro_template": "Your body is on your side. We're building from where you're comfortable — no surprises.",
+        "cue_card_style": "short_phrase",
+        "tone": "safety_framing",
+        "max_copy_length_words": 100
+      },
+      "do_not_do": [
+        "Dismiss injury concern as psychological only",
+        "Force full-range movements before confidence is established",
+        "Use language that implies the client should 'just swing' normally"
+      ],
+      "risks_if_ignored": [
+        "Movement avoidance reinforcement",
+        "Injury compensation pattern",
+        "Fear-avoidance spiral"
+      ],
+      "contraindications": [
+        { "what_to_avoid": "Pressure exposure before movement confidence milestone", "why": "Severe avoidance or expanding fear pattern is a clinical-assessment flag", "risk_level": "high" }
+      ],
+      "evidence_tags": ["evidence_supported"]
+    }
+  ],
+
+  "intake_questions": [
+    {
+      "question_id": "Q1",
+      "prompt": "How much do you want to understand WHY a drill works before you try it?",
+      "scale": "1-5 Likert (1 = just show me, 5 = explain everything)",
+      "profile_signal": "explanation_depth_preference",
+      "scoring_hint": "gte 4 increases analytical/detail-seeker weight; lte 2 increases feel-first weight"
+    },
+    {
+      "question_id": "Q2",
+      "prompt": "When you're learning a new move, do you prefer to feel it out or follow step-by-step instructions?",
+      "scale": "1-5 Likert (1 = feel it out, 5 = step-by-step)",
+      "profile_signal": "explicit_vs_implicit_preference",
+      "scoring_hint": "gte 4 supports explicit/analytical; lte 2 supports implicit/feel-first"
+    },
+    {
+      "question_id": "Q3",
+      "prompt": "How much does your game fall apart when the stakes feel high — a match, a tournament, playing with strangers?",
+      "scale": "1-5 Likert (1 = thrives under pressure, 5 = notices a big drop-off)",
+      "profile_signal": "anxiety_reinvestment_risk",
+      "scoring_hint": "gte 4 triggers coach review flag for any pressure task"
+    },
+    {
+      "question_id": "Q4",
+      "prompt": "When you're practicing, how often do you want to know how you did after each rep?",
+      "scale": "1-5 Likert (1 = only occasionally, 5 = every single rep)",
+      "profile_signal": "feedback_tolerance",
+      "scoring_hint": "gte 4 indicates risk of feedback dependency; default to faded KR regardless"
+    },
+    {
+      "question_id": "Q5",
+      "prompt": "How important is it to you to choose which drills you do in a session?",
+      "scale": "1-5 Likert (1 = trusts coach to decide, 5 = wants meaningful input)",
+      "profile_signal": "autonomy_preference",
+      "scoring_hint": "gte 4 unlocks practice-menu format"
+    },
+    {
+      "question_id": "Q6",
+      "prompt": "If you make an error in practice, how long does it stay with you mentally?",
+      "scale": "1-5 Likert (1 = move on immediately, 5 = affects the rest of the session)",
+      "profile_signal": "perfectionism_anxiety",
+      "scoring_hint": "gte 4 contributes to anxious_controller profile"
+    },
+    {
+      "question_id": "Q7",
+      "prompt": "How confident are you right now in your ability to improve this specific area of your game?",
+      "scale": "1-5 Likert (1 = not at all confident, 5 = very confident)",
+      "profile_signal": "confidence_self_efficacy",
+      "scoring_hint": "lte 2 activates low_confidence_novice modifiers and success-stack design"
+    },
+    {
+      "question_id": "Q8",
+      "prompt": "How many different things can you comfortably focus on during a session before you feel overloaded?",
+      "scale": "1-5 Likert (1 = one thing only, 5 = several at once)",
+      "profile_signal": "attention_executive_function",
+      "scoring_hint": "lte 2 forces single-cue blocks and shorter sessions"
+    },
+    {
+      "question_id": "Q9",
+      "prompt": "Do you have any area where a previous injury makes you hesitant to practice certain movements?",
+      "scale": "yes/no + optional free text",
+      "profile_signal": "injury_fear_guarding",
+      "scoring_hint": "yes activates injury_guarded_client profile and symptom-gated dose",
+      "free_text_handling": "store free text without screening for clinical labels; coach review required"
+    },
+    {
+      "question_id": "Q10",
+      "prompt": "How closely do you usually stick to the practice plan your coach gives you?",
+      "scale": "1-5 Likert (1 = often modify/skip, 5 = follow exactly)",
+      "profile_signal": "adherence_conscientiousness",
+      "scoring_hint": "lte 2 reduces homework complexity and emphasizes in-session dose"
+    }
+  ],
+
+  "adaptation_rules": [
+    {
+      "rule_id": "ar_high_anxiety",
+      "trigger": "anxiety_reinvestment_risk == high OR Q3 >= 4 OR Q6 >= 4",
+      "session_adaptation": "Analogy cues only; errorless progression; no pressure tasks without coach sign-off; QE pre-shot routine; bandwidth feedback; screen-off TrackMan",
+      "client_copy": "Today's practice is about letting your swing do what it already knows how to do. One feel. One target. One shot at a time.",
+      "coach_note": "Reinvestment risk flag active. ASAP desensitization protocol. No live TrackMan number-watching during acquisition.",
+      "evidence_confidence": "evidence_supported",
+      "evidence_tag": "masters_reinvestment_theory"
+    },
+    {
+      "rule_id": "ar_low_confidence",
+      "trigger": "confidence_self_efficacy == low OR Q7 <= 2",
+      "session_adaptation": "Success-stack drills; errorless progression; process praise before outcome feedback; no pressure tasks until 4+ successful blocks; mastery framing",
+      "client_copy": "Every rep you complete is training your brain. You don't need to be good yet — you need to be consistent.",
+      "coach_note": "Intentional Bandura-source sequencing. No comparative feedback. Track smallest wins explicitly.",
+      "evidence_confidence": "evidence_supported",
+      "evidence_tag": "bandura_self_efficacy"
+    },
+    {
+      "rule_id": "ar_detail_seeker",
+      "trigger": "explanation_depth_preference == high OR Q1 >= 4",
+      "session_adaptation": "Technical rationale available pre-drill; rich KP during acquisition; predict-then-check TrackMan; explicit-knowledge park required before performance reps",
+      "client_copy": "Here's what this drill is doing and why it works. Data review at the end.",
+      "coach_note": "Monitor for reinvestment risk; park explicit knowledge before performance reps and competitive play.",
+      "evidence_confidence": "inferred_review_required",
+      "evidence_tag": "novice_expert_differences"
+    },
+    {
+      "rule_id": "ar_feel_first",
+      "trigger": "explanation_depth_preference == low AND Q2 <= 2",
+      "session_adaptation": "Demo + one-sentence cue; analogy library; self-controlled feedback; constraint-led environments; no data screens during acquisition",
+      "client_copy": "Your job is to feel the shape of that shot — the score is the feedback.",
+      "coach_note": "Use analogy library. Prioritize QE protocol for pressure situations. Avoid over-coaching.",
+      "evidence_confidence": "evidence_supported",
+      "evidence_tag": "implicit_learning_analogy"
+    },
+    {
+      "rule_id": "ar_data_dependency_risk",
+      "trigger": "feedback_tolerance == high AND data_technology_preference == high",
+      "session_adaptation": "Enforce predict-then-check protocol; require at least one screen-off block per session; faded KR after acquisition phase",
+      "client_copy": "Predict the number first. Then check. That's how it transfers.",
+      "coach_note": "Risk of feedback dependency. Build screen-off blocks deliberately. Watch for range-to-course transfer gap.",
+      "evidence_confidence": "evidence_supported",
+      "evidence_tag": "fading_kr"
+    },
+    {
+      "rule_id": "ar_low_attention",
+      "trigger": "attention_executive_function == low OR Q8 <= 2",
+      "session_adaptation": "1 cue max per block; ultra-short cue language (1-3 words); shorter sessions or micro-blocks; demo + 1 sentence only; single visible metric",
+      "client_copy": "Today: 1 thing. Here it is:",
+      "coach_note": "Reduce verbal load first before adjusting drill difficulty. Use visual anchors to externalize focus physically.",
+      "evidence_confidence": "evidence_supported",
+      "evidence_tag": "attention_executive_function_sport"
+    },
+    {
+      "rule_id": "ar_injury_guarded",
+      "trigger": "injury_fear_guarding != none OR Q9 == yes",
+      "session_adaptation": "Graduated exposure; non-threat language; symptom-gated load (pain 0-5/10 acceptable); pressure tasks gated until movement confidence milestone",
+      "client_copy": "Your body is on your side. We're building from where you're comfortable — no surprises.",
+      "coach_note": "Flag for clinical assessment if avoidance is severe or expanding. CBT-informed graded exposure first-line.",
+      "evidence_confidence": "evidence_supported",
+      "evidence_tag": "fear_of_reinjury"
+    },
+    {
+      "rule_id": "ar_high_autonomy",
+      "trigger": "autonomy_preference == high OR Q5 >= 4",
+      "session_adaptation": "Practice menu with 2-3 drill choices; self-controlled feedback; fewer scheduled check-ins; outcome-based tracking rather than compliance",
+      "client_copy": "You choose the sequence. Here are the constraints. Here's what success looks like.",
+      "coach_note": "Track outcomes not compliance. Monitor for drift from evidence-based volume.",
+      "evidence_confidence": "evidence_supported",
+      "evidence_tag": "sdt_autonomy"
+    },
+    {
+      "rule_id": "ar_competitive_gamer",
+      "trigger": "competition_pressure_preference == high AND anxiety_reinvestment_risk != high",
+      "session_adaptation": "Earlier progression to random practice; gamified stakes; variety; competitive scoreboard framing",
+      "client_copy": "Pick your stakes. The constraint is the score.",
+      "coach_note": "Monitor volume drift. Ensure foundational blocked-practice quality before ramping variability.",
+      "evidence_confidence": "inferred_review_required",
+      "evidence_tag": "challenge_point_framework"
+    },
+    {
+      "rule_id": "ar_low_adherence",
+      "trigger": "adherence_conscientiousness == low OR Q10 <= 2",
+      "session_adaptation": "Emphasize in-session dose; minimal homework (1 step only); plan for partial compliance; focus on highest-yield work in-session",
+      "client_copy": "One thing this week. That's it.",
+      "coach_note": "Plan for non-compliance. Dose-delivered may be lower than dose-prescribed.",
+      "evidence_confidence": "evidence_supported",
+      "evidence_tag": "conscientiousness_adherence"
+    }
+  ],
+
+  "proposal_engine_integration": {
+    "stage": "human_engine_layer",
+    "applies_after": ["safety_readiness_gates", "fatigue_gate", "injury_clearance_gate"],
+    "applies_before": ["final_block_drill_candidate_filtering", "client_copy_rendering", "homework_assignment"],
+    "interaction_with_science_engine": "Does not modify the technical prescription (block intent, drill family, proof test). Modifies HOW the prescription is delivered: cue style, feedback protocol, pressure gating, dose multipliers, homework format, coach script, client copy.",
+    "interaction_with_momentum_engine": "Profile confidence updates based on observed in-session signals (observed > declared per Human Engine hierarchy). Momentum Engine surfaces drift signals that re-weight profile dimensions over time.",
+    "soft_vs_hard_rules": {
+      "soft_rules": "All cueing, feedback, technology, homework, copy, and explanation modifiers are soft — they bias generation but do not block.",
+      "hard_rules": "Coach sign-off requirements, pressure-task locks, and injury-guarded symptom gates are hard — they block proposal emission until satisfied."
+    },
+    "ordering_notes": "Apply RLU dose modifiers (rlu_volume_modifier, acquisition_reps_modifier, consolidation_reps_modifier) before block sizing. Apply cueing_rule and feedback_rule during block content generation. Apply client_copy and coach_script during render."
+  },
+
+  "quality_checks": [
+    "Every proposal must pass the SDT three-question screen (autonomy / competence / relatedness signals present in copy)",
+    "Every drill cue defaults to external focus unless explicit override by a profile rule",
+    "Every client copy block stays within profile.client_copy.max_copy_length_words",
+    "Every pressure task respects profile.pressure_rule.coach_sign_off_required and min_stage_before_pressure",
+    "Every TrackMan-engaging block respects profile.technology_rule and predict_then_check where required",
+    "Every homework assignment respects profile.homework_rule.complexity_level and expected_compliance_rate",
+    "No client copy uses VARK / VAK / personality-type / clinical labels"
+  ],
+
+  "blocked_patterns": [
+    {
+      "pattern_id": "no_vark_labels",
+      "description": "Never label clients as 'visual', 'auditory', or 'kinesthetic' learners; never use VARK/VAK framing in any client-facing copy, coach UI, or internal data label.",
+      "reason": "Meshing hypothesis disproven; no replicable effect sizes; APA classifies as a neuromyth with potential to cause harm."
+    },
+    {
+      "pattern_id": "no_pressure_for_high_reinvestment_without_coach_review",
+      "description": "Never emit a pressure task or competition-simulation block for a client flagged anxious_controller (or anxiety_reinvestment_risk == high) without explicit coach sign-off.",
+      "reason": "Premature pressure exposure can reinforce choke pattern and harm practice quality."
+    },
+    {
+      "pattern_id": "no_excessive_cue_load",
+      "description": "Never exceed profile.cueing_rule.cues_per_block_max. Default cap is 2 cues per block; low-attention and anxious profiles cap at 1.",
+      "reason": "Cue overload shuts down motor learning and exceeds attention capacity for affected profiles."
+    },
+    {
+      "pattern_id": "no_100_percent_tech_feedback_dependency",
+      "description": "Never construct sessions that require continuous live-screen feedback for every shot. Require at least one screen-off block per session for data-engaged profiles, and screen-off default for anxious / feel-first / injury-guarded.",
+      "reason": "100% KR creates feedback dependency and impairs retention; range-screen dependency does not transfer to course."
+    },
+    {
+      "pattern_id": "no_client_blaming_language",
+      "description": "Never use copy that implies the client's effort, character, or willpower is the cause of a missed outcome (e.g., 'you should be doing better at this', 'just push through', 'commit harder'). Use process and constraint language instead.",
+      "reason": "Identity-threat language harms self-efficacy, increases dropout risk, and conflicts with SDT autonomy/competence supports."
+    }
+  ],
+
+  "mvp_fields_required": [
+    "_meta",
+    "profile_dimensions",
+    "learner_profiles[].profile_key",
+    "learner_profiles[].display_name",
+    "learner_profiles[].signal_inputs.intake_questions",
+    "learner_profiles[].cueing_rule.default_focus",
+    "learner_profiles[].cueing_rule.cues_per_block_max",
+    "learner_profiles[].feedback_rule.frequency",
+    "learner_profiles[].feedback_rule.tech_feedback_protocol",
+    "learner_profiles[].pressure_rule.coach_sign_off_required",
+    "learner_profiles[].pressure_rule.min_stage_before_pressure",
+    "learner_profiles[].homework_rule.format",
+    "learner_profiles[].homework_rule.complexity_level",
+    "learner_profiles[].client_copy.tone",
+    "learner_profiles[].client_copy.max_copy_length_words",
+    "learner_profiles[].do_not_do",
+    "learner_profiles[].evidence_tags",
+    "intake_questions",
+    "adaptation_rules",
+    "proposal_engine_integration",
+    "quality_checks",
+    "blocked_patterns"
+  ],
+
+  "defer_fields": [
+    "automated_msrs_reinvestment_scale",
+    "real_time_in_session_observation_capture",
+    "adaptive_profile_update_from_session_outcomes",
+    "explicit_implicit_learning_stage_tracking",
+    "automated_pressure_desensitization_asap_protocol",
+    "quiet_eye_training_module",
+    "video_feedback_integration",
+    "learner_profiles[].evidence_sources_full_url_list",
+    "learner_profiles[].coach_observation_markers_weighting",
+    "learner_profiles[].behavioral_markers_weighting",
+    "cross_profile_blend_logic_for_multi_signal_clients"
+  ],
+
+  "evidence_confidence_tags_used": [
+    "evidence_supported",
+    "inferred_review_required",
+    "Forefront_proposed"
+  ]
+}
