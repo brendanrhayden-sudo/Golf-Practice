@@ -16,6 +16,10 @@ staging area only.
 - **Next step:** Brendan review, then convert selected rules into validated
   app data (drill library entries, branch logic, gate definitions, dataset
   rows) through the normal app data pipeline.
+- **RLU dose-model report (`rlu-dose-model-research.pplx.md`):** Evidence
+  input for a future practice-dose / proposal-engine layer and for
+  marketing language refinement. Not wired into the app; no app behavior
+  or production data changes from adding this file.
 
 ## Purpose
 
@@ -31,6 +35,9 @@ The materials here are intended to:
 4. Provide a draft dataset seed (`psb-dataset-seed.draft.json`) that
    enumerates blocks, branch intents, drill families, proof tests, and
    gates. This file is **reference only** — it is NOT loaded by the app.
+5. Capture the RLU (Resolved/Representative Learning Unit) dose-model
+   research as evidence input for a future practice-dose / proposal-engine
+   layer and for marketing language refinement. **Not wired into the app.**
 
 ## Contents
 
@@ -40,6 +47,7 @@ The materials here are intended to:
 | `psb-dataset-seed.draft.json` | `forefront_golf_psb_dataset_seed.json` | Draft dataset seed; reference data only, not consumed by the app |
 | `grf-expert-deep-dive.pplx.md` | `forefront-golf-grf-expert-deep-dive.pplx.md` | Ground reaction force expert deep dive |
 | `daily-progressive-practice-prescription.pplx.md` | `forefront-golf-daily-progressive-practice-prescription.pplx.md` | Daily progressive practice prescription framework |
+| `rlu-dose-model-research.pplx.md` | `forefront_rlu_research_report.pplx.md` | **DRAFT - FOR BRENDAN REVIEW - NOT PRODUCTION.** RLU dose-model research; evidence input for a future practice-dose / proposal-engine layer and marketing language. Not wired into the app. |
 
 All source materials were present and copied successfully — no missing files.
 
